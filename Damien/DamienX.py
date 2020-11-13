@@ -14,8 +14,8 @@ def _start(client, message):
         )
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['about']))
-def _about(client, photo):
-    client.send_photo("me", "https://i.imgur.com/BQBTP7d.png", caption="Holidays!")
+def _about(client, message):
+    await client.send_photo("me", "https://i.imgur.com/BQBTP7d.png", caption="Holidays!")
 
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
