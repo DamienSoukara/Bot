@@ -15,9 +15,7 @@ def _start(client, message):
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['about']))
 def _about(client, message):
-    client.send_message(message.chat.id,
-        text=tr.ABOUT_MSG,
-        parse_mode="markdown",
+    client.send_photo("me", "https://i.imgur.com/BQBTP7d.png", caption="Holidays!")
         reply_to_message_id=message.message_id
         )
 
