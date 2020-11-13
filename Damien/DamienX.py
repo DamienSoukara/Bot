@@ -13,9 +13,11 @@ def _start(client, message):
         reply_to_message_id=message.message_id
         )
 
-@Client.on_message(filters.private & filters.incoming & filters.command(['about']))
+@Client.on_message(filters.private & filters.command(['about']))
 def _about(client, message):
-    await client.send_photo("me", "https://i.imgur.com/BQBTP7d.png", caption="Holidays!")
+    client.send_photo("me", "https://telegra.ph/file/b98f67f11641a45625fd4.jpg",
+        caption="Holidays!"
+        )
 
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
