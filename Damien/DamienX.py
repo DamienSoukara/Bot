@@ -19,7 +19,7 @@ def _about(client, message):
     photoUrl = "https://telegra.ph/file/aa59c3024666f7bc9f712.jpg"
     client.send_photo(chatID, photoUrl)
 
-@client.on_message(filters.private & filters.command('test'))
+@Client.on_message(filters.private & filters.command('test'))
 def _test(client, message):
     chatID = message.chat.id # ايدي المحادثة
     photolink = "https://i.imgur.com/5Fw6nMR.jpg" # ايدي الصورة
