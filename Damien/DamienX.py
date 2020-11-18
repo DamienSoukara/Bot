@@ -13,7 +13,7 @@ def _start(client, message):
         reply_to_message_id=message.message_id
         )
 
-@Client.on_message(Filters.private & Filters.command('photoUrl'))
+@Client.on_message(filters.private & filters.command('photoUrl'))
 def photoUrl(client, message):
     photoUrl = "https://telegra.ph/file/aa59c3024666f7bc9f712.jpg" # رابط الصورة
     Client.reply_photo(photoUrl) # ارسال الصورة للمحادثة عبر رابط الصورة
