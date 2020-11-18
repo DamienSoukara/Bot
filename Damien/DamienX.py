@@ -2,7 +2,6 @@ import logging
 from DamienConfig import Messages as tr
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
 logging.basicConfig(level=logging.INFO)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['start']))
@@ -18,6 +17,14 @@ def _about(client, message):
     chatID = message.chat.id
     photoUrl = "https://telegra.ph/file/aa59c3024666f7bc9f712.jpg"
     client.send_photo(chatID, photoUrl)
+    reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("👑 My Owner", url=f"t.me/AmineSoukara"),
+                    InlineKeyboardButton("💬 Channel", url="t.me/DamienSoukara")],
+                    [InlineKeyboardButton("🔥 Deploy DAMIEN-X", url="https://heroku.com/deploy?template=https://github.com/AmineSoukara/Damien-X/tree/alpha")
+                    ]]
+                )
+            )
+
 
 @Client.on_message(filters.private & filters.command('test'))
 def _test(client, message):
