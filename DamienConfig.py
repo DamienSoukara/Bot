@@ -10,7 +10,7 @@ class Config():
     BOT_TOKEN = "1236676824:AAHBjEYEf5M5jk5rfrZ7qShepqNS4nFbR5s"
     APP_ID = "1358970"
     API_HASH = "57aff1848504fcde424d181d5cfee983"
-
+    START = "HI BABY"
 class Messages():
       HELP_MSG = [
         ".",
