@@ -6,11 +6,13 @@ class Config():
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     APP_ID = os.environ.get("APP_ID", 6)
     API_HASH = os.environ.get("API_HASH", None)
+    START = os.environ.get("START", "Hi youuu")
   else:
     BOT_TOKEN = "1236676824:AAHBjEYEf5M5jk5rfrZ7qShepqNS4nFbR5s"
     APP_ID = "1358970"
     API_HASH = "57aff1848504fcde424d181d5cfee983"
     START = "HI BABY"
+
 class Messages():
       HELP_MSG = [
         ".",
