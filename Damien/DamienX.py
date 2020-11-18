@@ -28,7 +28,7 @@ def _test(client, message):
     parse_mode = "markdown" # نوع التنسيق يمكنك الاختيار بين Markdown او HTML
     # تنسيق ماركداون : https://core.telegram.org/bots/api#markdown-style
     # تنسيق HTML : https://core.telegram.org/bots/api#html-style
-    client.send_photo(chatID, photolink, caption, parse_mode)
+    client.send_photo(chatID, photolink, caption,)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
 def _help(client, message):
