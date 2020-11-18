@@ -7,7 +7,7 @@ class Config():
     APP_ID = os.environ.get("APP_ID", 6)
     API_HASH = os.environ.get("API_HASH", None)
   else:
-    BOT_TOKEN = "1225254959:AAH6z_2KmkYRSSL6XFH9nKt5TFX8sjvD0Vo"
+    BOT_TOKEN = "1236676824:AAHBjEYEf5M5jk5rfrZ7qShepqNS4nFbR5s"
     APP_ID = "1358970"
     API_HASH = "57aff1848504fcde424d181d5cfee983"
 
