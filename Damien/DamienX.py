@@ -24,11 +24,8 @@ def _test(client, message):
     chatID = message.chat.id # ايدي المحادثة
     photoUrl = "https://i.imgur.com/5Fw6nMR.jpg" # ايدي الصورة
     # الوصف اسفل الصورة بتنسيق ماركداون ليظهر بشكل مائل
-    caption = "__عالم البرمجة__" 
-    style = "Mardown" # نوع التنسيق يمكنك الاختيار بين Markdown او HTML
-    # تنسيق ماركداون : https://core.telegram.org/bots/api#markdown-style
-    # تنسيق HTML : https://core.telegram.org/bots/api#html-style
-    client.send_photo(chatID, photoUrl, caption, style)
+    caption = "**Damien**" 
+    client.send_photo(chatID, photoUrl, caption, parse_mode="markdown")
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
 def _help(client, message):
