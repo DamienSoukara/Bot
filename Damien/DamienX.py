@@ -23,7 +23,7 @@ def _about(client, message):
 def _test(client, message):
     chatID = message.chat.id
     photolink = "https://i.imgur.com/5Fw6nMR.jpg"
-    caption = "__DAMIEN__",
+    caption = "__DAMIEN__"
     client.send_photo(chatID,
         parse_mode="markdown",
         photolink,
