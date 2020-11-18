@@ -2,6 +2,7 @@ import logging
 from DamienConfig import Messages as tr
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from translation import Translation
 logging.basicConfig(level=logging.INFO)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['start']))
@@ -33,6 +34,23 @@ def _test(client, message):
     chatID = message.chat.id # ايدي المحادثة
     photoUrl = "https://i.imgur.com/5Fw6nMR.jpg" # ايدي الصورة 
     client.send_photo(chatID, photoUrl, caption = "**Damien**", parse_mode="markdown")
+
+@Client.on_message(filters.private & filters.command('t'))
+async def start(c, m):
+      button = [[
+                InlineKeyboardButton("💬 Feedback", callback_data="feedback"),
+                InlineKeyboardButton("📜 Rules", callback_data="rules"),
+                ],
+                [
+                InlineKeyboardButton("ℹ About", callback_data="about"),
+                InlineKeyboardButton("🔐 Login", callback_data="login"),
+               ]]
+      markup = InlineKeyboardMarkup(button)
+      await c.send_message(chat_id=m.chat.id,
+                           text=Translation.START,
+                           disable_web_page_preview=True,
+                           reply_to_message_id=m.message_id,
+                           reply_markup=markup)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
 def _help(client, message):
