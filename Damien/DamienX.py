@@ -15,9 +15,9 @@ def _start(client, message):
 
 @Client.on_message(filters.private & filters.command('about'))
 def _about(client, message):
-    photoUrl = "https://telegra.ph/file/aa59c3024666f7bc9f712.jpg" # رابط الصورة
-    Client.reply_photo(photoUrl) # ارسال الصورة للمحادثة عبر رابط الصورة
-
+    chatID = message.chat.id
+    photoUrl = "https://telegra.ph/file/aa59c3024666f7bc9f712.jpg"
+    client.send_photo(chatID, photoUrl)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
 def _help(client, message):
