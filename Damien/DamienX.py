@@ -22,10 +22,8 @@ def _about(client, message):
 @Client.on_message(filters.private & filters.command('test'))
 def _test(client, message):
     chatID = message.chat.id # ايدي المحادثة
-    photoUrl = "https://i.imgur.com/5Fw6nMR.jpg" # ايدي الصورة
-    # الوصف اسفل الصورة بتنسيق ماركداون ليظهر بشكل مائل
-    caption = "**Damien**" 
-    client.send_photo(chatID, photoUrl, caption, parse_mode="markdown")
+    photoUrl = "https://i.imgur.com/5Fw6nMR.jpg" # ايدي الصورة 
+    client.send_photo(chatID, photoUrl, caption = "**Damien**", parse_mode="markdown")
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
 def _help(client, message):
