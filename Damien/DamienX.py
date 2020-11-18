@@ -13,11 +13,10 @@ def _start(client, message):
         reply_to_message_id=message.message_id
         )
 
-@Client.on_message(filters.private & filters.command(['about']))
-def _about(client, message):
-    client.send_photo("me", "https://telegra.ph/file/b98f67f11641a45625fd4.jpg",
-        caption="Holidays!"
-        )
+@Client.on_message(Filters.private & Filters.command('photoUrl'))
+def photoUrl(client, message):
+    photoUrl = "https://telegra.ph/file/aa59c3024666f7bc9f712.jpg" # رابط الصورة
+    Client.reply_photo(photoUrl) # ارسال الصورة للمحادثة عبر رابط الصورة
 
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
