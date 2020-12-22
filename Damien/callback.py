@@ -73,7 +73,7 @@ async def cb_handler(bot, m):
         markup = InlineKeyboardMarkup(button)
         await bot.edit_message_text(chat_id=m.message.chat.id,
                            message_id=m.message.message_id,
-                           text=Translation.ABOUT.format(m.from_user.first_name),
+                           text=Translation.ABOUTT.format(m.from_user.first_name),
                            disable_web_page_preview=True,
                            reply_markup=markup)
 
