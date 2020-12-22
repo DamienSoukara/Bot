@@ -10,6 +10,8 @@ from config import Messages as tr
 from translation import Translation
 from .commands import start
 
+help_callback_filter = filters.create(lambda _, __, query: query.data.startswith('help+'))
+
 @Client.on_callback_query(help_callback_filter)
 def help_answer(c, callback_query):
     chat_id = callback_query.from_user.id
