@@ -92,12 +92,10 @@ URL | filename | username | password"""
     EXTRACT_ZIP_ERRS_OCCURED = "Sorry. Errors occurred while processing compressed file. Please check everything again twice, and if the issue persists, report this to <a href='https://telegram.dog/damiensoukara>@DamienSoukara</a>"
     EXTRACT_ZIP_STEP_TWO = """Select file_name to upload from the below options.
 You can use /rename command after receiving file to rename it with custom thumbnail support."""
-    CANCEL_STR = "Process Cancelled"
-    ZIP_UPLOADED_STR = "Uploaded {} files in {} seconds"
-    FREE_USER_LIMIT_Q_SZE = """Cannot Process.
-Free users only 1 request per 30 minutes.
-/upgrade or Try 1800 seconds later."""
-    SLOW_URL_DECED = "Gosh that seems to be a very slow URL. Since you were screwing my home, I am in no mood to download this file. Meanwhile, why don't you try this:==> https://shrtz.me/PtsVnf6 and get me a fast URL so that I can upload to Telegram, without me slowing down for other users."
+    FB = "MY FACEBOOK ACCOUNT"
+    WHTSP = "MY WHATSAPP NUMBER"
+    IG = "MY INSTAGRAM ACCOUNT"
+    ZIP_UPLOADED_STR = "MY WHATSAPP NUMBER"
 
     MOREHELP = """[💬](https://i.imgur.com/z0gaQ0Y.jpg)
 Extra Help Haha 
