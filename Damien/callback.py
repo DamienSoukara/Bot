@@ -39,7 +39,7 @@ async def cb_handler(c, m):
                            disable_web_page_preview=True,
                            reply_markup=markup)
 
-  if "ytdl" in cb_data:
+  if "whtsp" in cb_data:
         button = [[InlineKeyboardButton("🔙 Back", callback_data="morehelp"),
                 InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
@@ -49,7 +49,7 @@ async def cb_handler(c, m):
                            disable_web_page_preview=True,
                            reply_markup=markup)
 
-  if "urldl" in cb_data:
+  if "ig" in cb_data:
         button = [[InlineKeyboardButton("🔙 Back", callback_data="morehelp"),
                 InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
@@ -59,7 +59,7 @@ async def cb_handler(c, m):
                            disable_web_page_preview=True,
                            reply_markup=markup)
 
-  if "renamerx" in cb_data:
+  if "fb" in cb_data:
         button = [[InlineKeyboardButton("🔙 Back", callback_data="morehelp"),
                 InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
@@ -69,13 +69,13 @@ async def cb_handler(c, m):
                            disable_web_page_preview=True,
                            reply_markup=markup)
 
-  if "morehelp" in cb_data:
+  if "sm" in cb_data:
         button = [[
-                InlineKeyboardButton("🌐 Url Upload", callback_data="urldl"),
-                InlineKeyboardButton("✍ Renamer", callback_data="renamerx"),
+                InlineKeyboardButton("🌐 Facebook", callback_data="fb"),
+                InlineKeyboardButton("🌐 Instagram", callback_data="ig"),
                 ],
                 [
-                InlineKeyboardButton("🎞 YouTube DL", callback_data="ytdl"),
+                InlineKeyboardButton("🌐 WhatsApp", callback_data="whtsp"),
                 InlineKeyboardButton("🤖 Feedback", url="t.me/DamienRobot")
                 ],
                 [InlineKeyboardButton("🏠 Home", callback_data="home")]]
