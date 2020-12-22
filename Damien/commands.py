@@ -35,7 +35,7 @@ def _test(client, message):
     photoUrl = "https://i.imgur.com/5Fw6nMR.jpg" # ايدي الصورة 
     bot.send_photo(chatID, photoUrl, caption = "**Damien**", parse_mode="markdown")
 
-@Client.on_message(filters.private & filters.command('t'))
+@Client.on_message(filters.private & filters.command('dev'))
 async def start(c, m):
       button = [[
                 InlineKeyboardButton("💬 Feedback", callback_data="feedback"),
