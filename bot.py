@@ -1,6 +1,6 @@
 import logging
 from pyrogram import Client
-from DamienConfig import Config
+from config import Config
 
 logging.basicConfig(level=logging.INFO)
 
