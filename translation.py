@@ -2,8 +2,7 @@ class Translation(object):
 
     START_MSG = """[👋](https://i.imgur.com/wF1voFb.gif)  Hello **{}**
 
-ALL IN ONE BOT HAHA :
-○ Url Uploader ○ Renamer ○ YouTube DL
+Welcome To My Bot
 """
     HELP_USER = """Hi **{}** 👋
 
