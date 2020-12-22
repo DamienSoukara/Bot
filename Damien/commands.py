@@ -61,5 +61,3 @@ def _help(c, m):
         reply_markup = InlineKeyboardMarkup(map(1)),
         reply_to_message_id = m.message_id
     )
-
-help_callback_filter = filters.create(lambda _, __, query: query.data.startswith('help+'))
