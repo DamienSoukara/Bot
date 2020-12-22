@@ -3,7 +3,7 @@
 # ©️ @AmineSoukara
 
 import pyrogram
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from config import Config
 from translation import Translation
