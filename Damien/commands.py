@@ -25,7 +25,7 @@ async def start(c, m):
                 ],
                 [InlineKeyboardButton("🤴 Developer 🤴", url="t.me/AmineSoukara")]]
       markup = InlineKeyboardMarkup(button)
-      photoUrl = "https://telegra.ph/file/aa59c3024666f7bc9f712.jpg"
+      photoUrl = "https://i.imgur.com/x2igrLQ.jpg"
       await c.send_photo(photoUrl,
                            chat_id=m.chat.id,
                            text=Translation.START_MSG.format(m.from_user.first_name),
