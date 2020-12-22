@@ -6,8 +6,8 @@ from translation import Translation
 logging.basicConfig(level=logging.INFO)
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['start']))
-def _start(client, message):
-    client.send_message(message.chat.id,
+def _start(bot, message):
+    bot.send_message(message.chat.id,
         text=tr.X_MSG.format(message.from_user.first_name, message.from_user.id),
         parse_mode="markdown",
         reply_to_message_id=message.message_id
@@ -17,7 +17,7 @@ def _start(client, message):
 def _about(client, message):
     chatID = message.chat.id
     photoUrl = "https://telegra.ph/file/aa59c3024666f7bc9f712.jpg"
-    client.send_photo(chatID, photoUrl, 
+    bot.send_photo(chatID, photoUrl, 
     parse_mode = "markdown", 
     caption = "**Hellooooo**", 
     reply_to_message_id = message.message_id, 
@@ -33,7 +33,7 @@ def _about(client, message):
 def _test(client, message):
     chatID = message.chat.id # ايدي المحادثة
     photoUrl = "https://i.imgur.com/5Fw6nMR.jpg" # ايدي الصورة 
-    client.send_photo(chatID, photoUrl, caption = "**Damien**", parse_mode="markdown")
+    bot.send_photo(chatID, photoUrl, caption = "**Damien**", parse_mode="markdown")
 
 @Client.on_message(filters.private & filters.command('t'))
 async def start(c, m):
@@ -46,7 +46,7 @@ async def start(c, m):
                 InlineKeyboardButton("🔐 Login", callback_data="login"),
                ]]
       markup = InlineKeyboardMarkup(button)
-      await c.send_message(chat_id=m.chat.id,
+      await bot.send_message(chat_id=m.chat.id,
                            text=Translation.START,
                            disable_web_page_preview=True,
                            reply_to_message_id=m.message_id,
@@ -54,7 +54,7 @@ async def start(c, m):
 
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
 def _help(client, message):
-    client.send_message(chat_id = message.chat.id,
+    bot.send_message(chat_id = message.chat.id,
         text = tr.HELP_MSG[1],
         parse_mode="markdown",
         disable_notification = True,
@@ -69,7 +69,7 @@ def help_answer(client, callback_query):
     chat_id = callback_query.from_user.id
     message_id = callback_query.message.message_id
     msg = int(callback_query.data.split('+')[1])
-    client.edit_message_text(chat_id=chat_id,    message_id=message_id,
+    bot.edit_message_text(chat_id=chat_id,    message_id=message_id,
         text=tr.HELP_MSG[msg],    reply_markup=InlineKeyboardMarkup(map(msg))
     )
 
