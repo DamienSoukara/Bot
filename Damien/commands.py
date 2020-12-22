@@ -15,6 +15,8 @@ def _startt(c, m):
 
 @Client.on_message(filters.command(["start"]))
 async def start(c, m):
+      chatID = m.chat.id
+      photoUrl = "https://i.imgur.com/x2igrLQ.jpg"
       button = [[
                 InlineKeyboardButton("💬 My Channel", url="t.me/DamienSoukara"),
                 InlineKeyboardButton("🗣 My Group", url="t.me/damienhelp"),
@@ -25,12 +27,10 @@ async def start(c, m):
                 ],
                 [InlineKeyboardButton("🤴 Developer 🤴", url="t.me/AmineSoukara")]]
       markup = InlineKeyboardMarkup(button)
-      photoUrl = "https://i.imgur.com/x2igrLQ.jpg"
-      await c.send_photo(photoUrl,
-                           chat_id=m.chat.id,
-                           text=Translation.START_MSG.format(m.from_user.first_name),
-                           reply_to_message_id=m.message_id,
-                           reply_markup=markup)
+      await c.send_photo(chatID, photoUrl,
+                         caption = Translation.START_MSG.format(m.from_user.first_name),
+                         reply_to_message_id = m.message_id,
+                         reply_markup=markup)
 
 @Client.on_message(filters.private & filters.command('about'))
 def _about(c, m):
