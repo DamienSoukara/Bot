@@ -10,15 +10,15 @@ from translation import Translation
 from .commands import start
 
 @pyrogram.Client.on_callback_query()
-async def cb_handler(c, m):
+async def cb_handler(bot, m):
   cb_data = m.data
 
     if "helpx" in cb_data:
         button = [[InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
-        await bot.edit_message_text(chat_id=update.message.chat.id,
-                           message_id=update.message.message_id,
-                           text=Translation.HELP_USER.format(update.from_user.first_name),
+        await bot.edit_message_text(chat_id=m.message.chat.id,
+                           message_id=m.message.message_id,
+                           text=Translation.HELP_USER.format(m.from_user.first_name),
                            disable_web_page_preview=True,
                            reply_markup=markup)
 
@@ -26,8 +26,8 @@ async def cb_handler(c, m):
         button = [[InlineKeyboardButton("🔙 Back", callback_data="morehelp"),
                 InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
-        await bot.edit_message_text(chat_id=update.message.chat.id,
-                           message_id=update.message.message_id,
+        await bot.edit_message_text(chat_id=m.message.chat.id,
+                           message_id=m.message.message_id,
                            text=Translation.YTDL,
                            disable_web_page_preview=True,
                            reply_markup=markup)
@@ -36,8 +36,8 @@ async def cb_handler(c, m):
         button = [[InlineKeyboardButton("🔙 Back", callback_data="morehelp"),
                 InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
-        await bot.edit_message_text(chat_id=update.message.chat.id,
-                           message_id=update.message.message_id,
+        await bot.edit_message_text(chat_id=m.message.chat.id,
+                           message_id=m.message.message_id,
                            text=Translation.URLDL,
                            disable_web_page_preview=True,
                            reply_markup=markup)
@@ -46,8 +46,8 @@ async def cb_handler(c, m):
         button = [[InlineKeyboardButton("🔙 Back", callback_data="morehelp"),
                 InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
-        await bot.edit_message_text(chat_id=update.message.chat.id,
-                           message_id=update.message.message_id,
+        await bot.edit_message_text(chat_id=m.message.chat.id,
+                           message_id=m.message.message_id,
                            text=Translation.RENAMERX,
                            disable_web_page_preview=True,
                            reply_markup=markup)
@@ -63,17 +63,17 @@ async def cb_handler(c, m):
                 ],
                 [InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
-        await bot.edit_message_text(chat_id=update.message.chat.id,
-                           message_id=update.message.message_id,
-                           text=Translation.MOREHELP.format(update.from_user.first_name),
+        await bot.edit_message_text(chat_id=m.message.chat.id,
+                           message_id=m.message.message_id,
+                           text=Translation.MOREHELP.format(m.from_user.first_name),
                            reply_markup=markup)
 
     if "about" in cb_data:
         button = [[InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
-        await bot.edit_message_text(chat_id=update.message.chat.id,
-                           message_id=update.message.message_id,
-                           text=Translation.ABOUT.format(update.from_user.first_name),
+        await bot.edit_message_text(chat_id=m.message.chat.id,
+                           message_id=m.message.message_id,
+                           text=Translation.ABOUT.format(m.from_user.first_name),
                            disable_web_page_preview=True,
                            reply_markup=markup)
 
@@ -88,7 +88,7 @@ async def cb_handler(c, m):
                 ],
                 [InlineKeyboardButton("🤴 Developer 🤴", url="t.me/AmineSoukara")]]
       markup = InlineKeyboardMarkup(button)
-      await bot.edit_message_text(chat_id=update.message.chat.id,
-                           message_id=update.message.message_id,
-                           text=Translation.START_MSG.format(update.from_user.first_name),
+      await bot.edit_message_text(chat_id=m.message.chat.id,
+                           message_id=m.message.message_id,
+                           text=Translation.START_MSG.format(m.from_user.first_name),
                            reply_markup=markup)
