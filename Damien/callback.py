@@ -9,7 +9,7 @@ from config import Config
 from translation import Translation
 from .commands import start
 
-@pyrogram.Client.on_callback_query()
+@Client.on_callback_query()
 async def cb_handler(bot, m):
   cb_data = m.data
 
