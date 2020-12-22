@@ -9,7 +9,6 @@ from config import Config
 from config import Messages as tr
 from translation import Translation
 from .commands import start
-from .commands import help
 
 @Client.on_callback_query(help_callback_filter)
 def help_answer(c, callback_query):
