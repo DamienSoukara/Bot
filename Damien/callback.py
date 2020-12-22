@@ -3,9 +3,9 @@
 # ©️ @AmineSoukara
 
 import pyrogram
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-from helper_funcs.chat_base import TRChatBase
-from pyrogram import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from config import Config
 from translation import Translation
 from .commands import start
 
