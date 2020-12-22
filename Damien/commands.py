@@ -5,13 +5,30 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from translation import Translation
 logging.basicConfig(level=logging.INFO)
 
-@Client.on_message(filters.private & filters.incoming & filters.command(['start']))
-def _start(bot, message):
+@Client.on_message(filters.private & filters.incoming & filters.command(['startt']))
+def _startt(bot, message):
     bot.send_message(message.chat.id,
         text=tr.X_MSG.format(message.from_user.first_name, message.from_user.id),
         parse_mode="markdown",
         reply_to_message_id=message.message_id
         )
+
+@Client.on_message(filters.command(["start"]))
+async def start(c, m):
+      button = [[
+                InlineKeyboardButton("💬 Updates Channel", url="t.me/DamienSoukara"),
+                InlineKeyboardButton("🗣 Support Group", url="t.me/damienhelp"),
+                ],
+                [
+                InlineKeyboardButton("ℹ About", callback_data="about"),
+                InlineKeyboardButton("🤔 Help", callback_data="morehelp")
+                ],
+                [InlineKeyboardButton("🤴 Developer 🤴", url="t.me/AmineSoukara")]]
+      markup = InlineKeyboardMarkup(button)
+      await c.send_message(chat_id=m.chat.id,
+                           text=Translation.START_MSG.format(m.from_user.first_name),
+                           reply_to_message_id=m.message_id,
+                           reply_markup=markup)
 
 @Client.on_message(filters.private & filters.command('about'))
 def _about(client, message):
