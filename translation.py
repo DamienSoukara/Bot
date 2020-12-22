@@ -1,4 +1,4 @@
-from DamienConfig import Config
+from Config import Config
 
 class Translation(object):
       START = str(Config.START) + "\n\n💬 Join My Channel : [Damien Soukara](t.me/DamienSoukara)"
