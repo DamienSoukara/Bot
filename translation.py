@@ -22,7 +22,7 @@ class Translation(object):
 
 ```👥 Group:``` [Damien "SUPPORT"](https://t.me/DamienHelp)
 
-""
+"""
 
     START_MSG = """[👋](https://i.imgur.com/wF1voFb.gif)  Hello **{}**
 
