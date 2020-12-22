@@ -16,12 +16,12 @@ def _startt(c, m):
 @Client.on_message(filters.command(["start"]))
 async def start(c, m):
       button = [[
-                InlineKeyboardButton("💬 Updates Channel", url="t.me/DamienSoukara"),
-                InlineKeyboardButton("🗣 Support Group", url="t.me/damienhelp"),
+                InlineKeyboardButton("💬 My Channel", url="t.me/DamienSoukara"),
+                InlineKeyboardButton("🗣 My Group", url="t.me/damienhelp"),
                 ],
                 [
-                InlineKeyboardButton("ℹ About", callback_data="about"),
-                InlineKeyboardButton("🤔 Help", callback_data="morehelp")
+                InlineKeyboardButton("ℹ About Me", callback_data="about"),
+                InlineKeyboardButton("🤔 Social Media's", callback_data="sm")
                 ],
                 [InlineKeyboardButton("🤴 Developer 🤴", url="t.me/AmineSoukara")]]
       markup = InlineKeyboardMarkup(button)
