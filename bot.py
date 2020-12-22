@@ -4,13 +4,7 @@ from config import Config
 
 logging.basicConfig(level=logging.INFO)
 
-plugins = dict(
-    root="Damien",
-    include=[
-        "DamienX"
-    ]
-)
-
+plugins = dict(root="Damien")
 app = Client(
      'Damien Soukara',
       bot_token = Config.BOT_TOKEN,
@@ -18,5 +12,4 @@ app = Client(
       api_hash = Config.API_HASH,
       plugins = plugins
 )
-
 app.run()
