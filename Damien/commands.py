@@ -52,23 +52,6 @@ def _test(client, message):
     photoUrl = "https://i.imgur.com/5Fw6nMR.jpg" # ايدي الصورة 
     c.send_photo(chatID, photoUrl, caption = "**Damien**", parse_mode="markdown")
 
-@Client.on_message(filters.private & filters.command('dev'))
-async def start(c, m):
-      button = [[
-                InlineKeyboardButton("💬 Feedback", callback_data="feedback"),
-                InlineKeyboardButton("📜 Rules", callback_data="rules"),
-                ],
-                [
-                InlineKeyboardButton("ℹ About", callback_data="about"),
-                InlineKeyboardButton("🔐 Login", callback_data="login"),
-               ]]
-      markup = InlineKeyboardMarkup(button)
-      await c.send_message(chat_id=m.chat.id,
-                           text=Translation.START,
-                           disable_web_page_preview=True,
-                           reply_to_message_id=m.message_id,
-                           reply_markup=markup)
-
 @Client.on_message(filters.private & filters.incoming & filters.command(['help']))
 def _help(c, message):
     c.send_message(chat_id = message.chat.id,
