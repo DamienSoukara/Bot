@@ -1,4 +1,6 @@
 import logging
+import pyrogram
+from pyrogram import Client, filters
 from pyrogram.types import (
     InlineQuery, InlineQueryResultArticle, InputTextMessageContent,
     InlineQueryResultPhoto, InlineKeyboardButton, InlineKeyboardMarkup)
@@ -6,7 +8,7 @@ from pyrogram.types import (
 from Damien.utils import docs
 
 
-@bot.on_inline_query()
+@Client.on_inline_query()
 async def inline_docs(_, i_q: InlineQuery):
     query = i_q.query.lower()
 
