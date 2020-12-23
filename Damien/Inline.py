@@ -1,9 +1,8 @@
-
+import logging
 from pyrogram.types import (
     InlineQuery, InlineQueryResultArticle, InputTextMessageContent,
     InlineQueryResultPhoto, InlineKeyboardButton, InlineKeyboardMarkup)
 
-from Bot import bot
 from Damien.utils import docs
 
 
