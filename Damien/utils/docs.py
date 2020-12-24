@@ -23,8 +23,12 @@
 import re
 
 from pyrogram import filters, emoji, types
-from pyrogram.types import (InlineQueryResultArticle, InputTextMessageContent, InlineKeyboardMarkup,
-                            InlineKeyboardButton, Object)
+from pyrogram.types import (
+    InlineQueryResultArticle,
+    InputTextMessageContent,
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    Object)
 from pyrogram.raw import types as raw_types, functions as raw_methods
 from pyrogram.raw.all import layer
 from pyrogram import Client
@@ -145,7 +149,8 @@ class Result:
 
         def __new__(cls, item):
             constructor_id = hex(item[1].ID)
-            path = cls.DOCS.format(Result.snek(item[0]).replace("_", "-").replace(".-", "/"))
+            path = cls.DOCS.format(Result.snek(
+                item[0]).replace("_", "-").replace(".-", "/"))
 
             return InlineQueryResultArticle(
                 title=f"{item[0]}",
@@ -166,7 +171,8 @@ class Result:
 
         def __new__(cls, item):
             constructor_id = hex(item[1].ID)
-            path = cls.DOCS.format(Result.snek(item[0]).replace("_", "-").replace(".-", "/"))
+            path = cls.DOCS.format(Result.snek(
+                item[0]).replace("_", "-").replace(".-", "/"))
 
             return InlineQueryResultArticle(
                 title=f"{item[0]}",
@@ -188,7 +194,8 @@ for a in dir(Client):
     m = getattr(Client, a)
 
     try:
-        if not a.startswith("_") and a[0].islower() and m.__doc__ and not a.startswith("on_"):
+        if not a.startswith("_") and a[0].islower(
+        ) and m.__doc__ and not a.startswith("on_"):
             METHODS.append((a.lower(), Result.Method(m)))
     except AttributeError:
         pass
@@ -199,7 +206,8 @@ for a in dir(Client):
     m = getattr(Client, a)
 
     try:
-        if not a.startswith("_") and a[0].islower() and m.__doc__ and a.startswith("on_"):
+        if not a.startswith("_") and a[0].islower(
+        ) and m.__doc__ and a.startswith("on_"):
             DECORATORS.append((a.lower(), Result.Decorator(m)))
     except AttributeError:
         pass
@@ -216,7 +224,7 @@ FILTERS = [
     (i.lower(), Result.Filter(getattr(filters, i)))
     for i in filter(
         lambda x: not x.startswith("_")
-                  and x[0].islower(),
+        and x[0].islower(),
         dir(filters)
     )
 ]
@@ -234,7 +242,8 @@ for a in dir(types):
                     and m not in ["default", "read", "write", "with_traceback", "continue_propagation",
                                   "stop_propagation"]
                 ):
-                    BOUND_METHODS.append((f"{a}.{m}", Result.BoundMethod(getattr(c, m))))
+                    BOUND_METHODS.append(
+                        (f"{a}.{m}", Result.BoundMethod(getattr(c, m))))
     except TypeError:
         pass
 
@@ -245,8 +254,12 @@ for i in filter(lambda x: not x.startswith("_"), dir(raw_methods)):
         RAW_METHODS.append((i, Result.RawMethod((i, getattr(raw_methods, i)))))
     else:
         if "Int" not in dir(getattr(raw_methods, i)):
-            for j in filter(lambda x: not x.startswith("_") and x[0].isupper(), dir(getattr(raw_methods, i))):
-                RAW_METHODS.append((f"{i}.{j}", Result.RawMethod((f"{i}.{j}", getattr(getattr(raw_methods, i), j)))))
+            for j in filter(
+                lambda x: not x.startswith("_") and x[0].isupper(), dir(
+                    getattr(
+                        raw_methods, i))):
+                RAW_METHODS.append((f"{i}.{j}", Result.RawMethod(
+                    (f"{i}.{j}", getattr(getattr(raw_methods, i), j)))))
 
 for i in RAW_METHODS[:]:
     if "." not in i[0]:
@@ -260,8 +273,10 @@ for i in filter(lambda x: not x.startswith("_"), dir(raw_types)):
         RAW_TYPES.append((i, Result.RawType((i, getattr(raw_types, i)))))
     else:
         if "Int" not in dir(getattr(raw_types, i)):
-            for j in filter(lambda x: not x.startswith("_") and x[0].isupper(), dir(getattr(raw_types, i))):
-                RAW_TYPES.append((f"{i}.{j}", Result.RawType((f"{i}.{j}", getattr(getattr(raw_types, i), j)))))
+            for j in filter(lambda x: not x.startswith(
+                    "_") and x[0].isupper(), dir(getattr(raw_types, i))):
+                RAW_TYPES.append((f"{i}.{j}", Result.RawType(
+                    (f"{i}.{j}", getattr(getattr(raw_types, i), j)))))
 
 for i in RAW_TYPES[:]:
     if "." not in i[0]:
@@ -279,11 +294,9 @@ HELP = (
     f"{emoji.ROBOT} **Pyrogram Assistant**\n\n"
     f"You can use this bot in inline mode to search for Pyrogram methods, types and other resources from "
     f"https://docs.pyrogram.org.\n\n"
-
     f"**__Search__**\n"
     f"`@pyrogrambot <terms>` – Pyrogram API\n"
     f"`@pyrogrambot !r <terms>` – Telegram Raw API\n\n"
-
     f"**__List__**\n"
     f"`@pyrogrambot !m` – Methods\n"
     f"`@pyrogrambot !t` – Types\n"
@@ -291,8 +304,7 @@ HELP = (
     f"`@pyrogrambot !b` – Bound Methods\n"
     f"`@pyrogrambot !d` – Decorators\n"
     f"`@pyrogrambot !rm` – Raw Methods\n"
-    f"`@pyrogrambot !rt` – Raw Types\n\n"
-)
+    f"`@pyrogrambot !rt` – Raw Types\n\n")
 
 DEFAULT_RESULTS = [
     InlineQueryResultArticle(
