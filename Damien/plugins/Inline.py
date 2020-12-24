@@ -31,8 +31,7 @@ from pyrogram.types import (
 )
 
 from Damien import bot
-
-from .utils import docs
+from Damien.utils import docs
 
 NEXT_OFFSET = 25
 CACHE_TIME = 5
