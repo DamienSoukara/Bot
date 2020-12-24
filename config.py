@@ -9,7 +9,7 @@ class Config():
     START = os.environ.get("START", "Hi youuu")
     RULES = os.environ.get("RULES", "MKYN RULESZ")
   else:
-    BOT_TOKEN = "1407670019:AAH2ib084959Rla9zbYVnhecIQl0CBR1zL8"
+    BOT_TOKEN = "1495791391:AAGzm8Dh3IHoG7xtZbNezoINLxverPfRktQ"
     APP_ID = "1250763"
     API_HASH = "11d05c637abdb46e35f51bc73241c75c"
     START = "HI BABY"
