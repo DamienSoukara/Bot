@@ -1,5 +1,6 @@
 import os
 
+
 class Messages():
     HELP_MSG = [
         ".",
