@@ -1,11 +1,12 @@
 import logging
 from config import Messages as tr
-from pyrogram import Client, filters
+from pyrogram import filters
+from Damien import bot
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from translation import Translation
 logging.basicConfig(level=logging.INFO)
 
-@Client.on_message(filters.private & filters.incoming & filters.command(['startt']))
+@bot.on_message(filters.private & filters.incoming & filters.command(['startt']))
 def _startt(c, m):
     c.send_message(m.chat.id,
         text=tr.X_MSG.format(m.from_user.first_name, m.from_user.id),
@@ -13,7 +14,7 @@ def _startt(c, m):
         reply_to_message_id=m.message_id
         )
 
-@Client.on_message(filters.command(["start"]))
+@bot.on_message(filters.command(["start"]))
 async def start(c, m):
       chatID = m.chat.id
       photoUrl = "https://i.imgur.com/x2igrLQ.jpg"
@@ -32,7 +33,7 @@ async def start(c, m):
                          reply_to_message_id = m.message_id,
                          reply_markup=markup)
 
-@Client.on_message(filters.private & filters.command('about'))
+@bot.on_message(filters.private & filters.command('about'))
 def _about(c, m):
     chatID = m.chat.id
     photoUrl = "https://telegra.ph/file/aa59c3024666f7bc9f712.jpg"
@@ -48,13 +49,13 @@ def _about(c, m):
                 )
             )
 
-@Client.on_message(filters.private & filters.command('test'))
+@bot.on_message(filters.private & filters.command('test'))
 def _test(c, m):
     chatID = m.chat.id # ايدي المحادثة
     photoUrl = "https://i.imgur.com/5Fw6nMR.jpg" # ايدي الصورة 
     c.send_photo(chatID, photoUrl, caption = "**Damien**", parse_mode="markdown")
 
-@Client.on_message(filters.private & filters.incoming & filters.command(['help']))
+@bot.on_message(filters.private & filters.incoming & filters.command(['help']))
 def _help(client, message):
     client.send_message(chat_id = message.chat.id,
         text = tr.HELP_MSG[1],
@@ -66,7 +67,7 @@ def _help(client, message):
 
 help_callback_filter = filters.create(lambda _, __, query: query.data.startswith('help+'))
 
-@Client.on_callback_query(help_callback_filter)
+@bot.on_callback_query(help_callback_filter)
 def help_answer(client, callback_query):
     chat_id = callback_query.from_user.id
     message_id = callback_query.message.message_id
