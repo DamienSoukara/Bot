@@ -2,7 +2,7 @@ import time
 import logging
 from pyrogram.types import Message
 from pyrogram import Client
-import bot
+from Damien import bot
 from config import Config
 
 _BOT_ID = 0
