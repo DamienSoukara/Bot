@@ -3,3 +3,4 @@ TgCrypto
 aiofiles
 aiohttp
 python-dotenv
+num2words
