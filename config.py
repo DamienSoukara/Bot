@@ -14,7 +14,9 @@ class Config:
     CHAT_BASE_TOKEN = os.environ.get("CHAT_BASE_TOKEN", "")
     UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
     AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
-    BANNED_USERS = set(int(x) for x in os.environ.get("BANNED_USERS", "").split())
+    BANNED_USERS = set(
+        int(x) for x in os.environ.get(
+            "BANNED_USERS", "").split())
     AUTH_CHATS = set([-1001474594528])  # @UserGeOt
     if os.environ.get("AUTH_CHATS"):
         AUTH_CHATS.update(map(int, os.environ.get("AUTH_CHATS").split()))
