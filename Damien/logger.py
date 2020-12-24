@@ -6,8 +6,14 @@
 #
 # All rights reserved.
 
-from .logger import logging  # noqa
-from config import Config  # noqa
-from .bot import bot  # noqa
-from . import cus_filters  # noqa
-from .database import DB, save_data, load_data  # noqa
+__all__ = ["logging"]
+
+import logging
+
+# enable logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
