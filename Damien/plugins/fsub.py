@@ -1,16 +1,24 @@
+# Copyright (C) 2020 by UsergeTeam@Github, < https://github.com/UsergeTeam >.
+#
+# This file is part of < https://github.com/UsergeTeam/Userge-Assistant > project,
+# and is released under the "GNU v3.0 License Agreement".
+# Please see < https://github.com/Userge-Assistant/blob/master/LICENSE >
+#
+# All rights reserved.
+
 import asyncio
-import logging
+
 from pyrogram import filters
 from pyrogram.types import (
     Message, ChatPermissions, CallbackQuery,
     InlineKeyboardMarkup, InlineKeyboardButton)
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
-from pyrogram import Client
 
-from Damien import cus_filters
+from Damien import bot, cus_filters
 from Damien.utils import check_bot_rights
 
-@Client.on_message(
+
+@bot.on_message(
     filters.group & filters.new_chat_members & cus_filters.auth_chats)
 async def _verify_msg_(_, msg: Message):
     """ Verify Msg for New chat Members """
@@ -31,9 +39,9 @@ async def _verify_msg_(_, msg: Message):
             await asyncio.sleep(120)
             await reply.delete()
         else:
-            await Client.restrict_chat_member(chat_id, member.id, ChatPermissions())
+            await bot.restrict_chat_member(chat_id, member.id, ChatPermissions())
             try:
-                await Client.get_chat_member("DamienSoukara", member.id)
+                await bot.get_chat_member("DamienSoukara", member.id)
             except UserNotParticipant:
                 await force_sub(msg, member)
             else:
@@ -67,7 +75,7 @@ __Click on Join Now and Unmute yourself.__ """
             [
                 InlineKeyboardButton(
                     text="Join Now",
-                    url="https://t.me/DamienSoukara"),
+                    url="https://t.me/"),
                 InlineKeyboardButton(
                     text="Unmute Me",
                     callback_data=f"joined_unmute({user.id} {msg.message_id})")
@@ -79,7 +87,7 @@ __Click on Join Now and Unmute yourself.__ """
 
 async def wc_msg(user):
     """ arguments and reply_markup for sending after verify """
-    gif = await Client.get_messages("damienhelp", 25293)
+    gif = await bot.get_messages("damienhelp", 25293)
     file_id = gif.animation.file_id
     file_ref = gif.animation.file_ref
     text = f""" **Welcome** {user.mention},
@@ -89,7 +97,7 @@ __Check out the Button below. and feel free to ask here.__ 🤘 """
             [
                 InlineKeyboardButton(
                     text="More info.",
-                    url="https://t.me/DamienSoukara/637843"
+                    url="https://t.me/"
                 )
             ]
         ]
@@ -97,16 +105,16 @@ __Check out the Button below. and feel free to ask here.__ 🤘 """
     return file_id, file_ref, text, buttons
 
 
-@Client.on_callback_query(filters.regex(pattern=r"verify_cq\((.+?)\)"))
+@bot.on_callback_query(filters.regex(pattern=r"verify_cq\((.+?)\)"))
 async def _verify_user_(_, c_q: CallbackQuery):
     _a, _b = c_q.matches[0].group(1).split(' ', maxsplit=1)
     user_id = int(_a)
     msg_id = int(_b)
     if c_q.from_user.id == user_id:
         await c_q.message.delete()
-        await Client.unban_chat_member(c_q.message.chat.id, user_id)
-        file_id, file_ref, text, buttons = await wc_msg(await Client.get_users(user_id))
-        msg = await Client.send_animation(
+        await bot.unban_chat_member(c_q.message.chat.id, user_id)
+        file_id, file_ref, text, buttons = await wc_msg(await bot.get_users(user_id))
+        msg = await bot.send_animation(
             c_q.message.chat.id,
             animation=file_id,
             file_ref=file_ref,
@@ -119,32 +127,32 @@ async def _verify_user_(_, c_q: CallbackQuery):
         await c_q.answer("This message is not for you. 😐", show_alert=True)
 
 
-@Client.on_callback_query(filters.regex(pattern=r"joined_unmute\((.+?)\)"))
+@bot.on_callback_query(filters.regex(pattern=r"joined_unmute\((.+?)\)"))
 async def _on_joined_unmute_(_, c_q: CallbackQuery):
     if not c_q.message.chat:
         return
     _a, _b = c_q.matches[0].group(1).split(' ', maxsplit=1)
     user_id = int(_a)
     msg_id = int(_b)
-    bot_id = (await Client.get_me()).id
+    bot_id = (await bot.get_me()).id
     chat_id = c_q.message.chat.id
 
-    user = await Client.get_users(user_id)
+    user = await bot.get_users(user_id)
 
     if c_q.from_user.id == user_id:
-        get_user = await Client.get_chat_member(chat_id, user_id)
+        get_user = await bot.get_chat_member(chat_id, user_id)
         if get_user.restricted_by and get_user.restricted_by.id == bot_id:
             try:
-                await Client.get_chat_member("DamienSoukara", user_id)
+                await bot.get_chat_member("DamienSoukara", user_id)
             except UserNotParticipant:
                 await c_q.answer(
                     "Click on Join Now button to Join our Updates Channel"
                     " and click on Unmute me Button again.", show_alert=True)
             else:
                 await c_q.message.delete()
-                await Client.unban_chat_member(c_q.message.chat.id, user_id)
+                await bot.unban_chat_member(c_q.message.chat.id, user_id)
                 f_d, f_r, txt, btns = await wc_msg(user)
-                msg = await Client.send_animation(
+                msg = await bot.send_animation(
                     c_q.message.chat.id,
                     animation=f_d,
                     file_ref=f_r,
