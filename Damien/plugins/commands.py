@@ -8,6 +8,7 @@ from Damien import bot
 from help import Messages as tr
 from helper_funcs.chat_base import TRChatBase
 from translation import Translation
+from config import Config
 
 logging.basicConfig(level=logging.INFO)
 
