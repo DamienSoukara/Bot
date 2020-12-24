@@ -7,10 +7,8 @@ import asyncio
 from pyrogram import filters
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
-
 from Damien import bot
 from translation import Translation
-
 from .fsub import wc_msg
 
 
