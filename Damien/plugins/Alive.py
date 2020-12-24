@@ -45,14 +45,9 @@ async def _sendit(chat_id):
             [
                 InlineKeyboardButton(
                     text="License",
-                    url=(
-                        "https://github.com/"
-                        "AmineSoukara"
-                    ),
+                    url=("https://github.com/" "AmineSoukara"),
                 ),
-                InlineKeyboardButton(
-                    text="Repo", url="https://github.com/"
-                ),
+                InlineKeyboardButton(text="Repo", url="https://github.com/"),
             ]
         ]
     )
