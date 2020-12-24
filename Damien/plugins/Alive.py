@@ -6,7 +6,7 @@ from pyrogram.errors.exceptions import FileIdInvalid, FileReferenceEmpty
 from pyrogram.errors.exceptions.bad_request_400 import BadRequest
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from Damien import bot, cus_filters, versions
+from Damien import bot, versions
 from Damien.bot import START_TIME
 from Damien.utils import time_formatter
 
