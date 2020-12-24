@@ -3,3 +3,5 @@ TgCrypto
 aiofiles
 aiohttp
 python-dotenv
+num2words
+git+git://github.com/google/chatbase-python.git
