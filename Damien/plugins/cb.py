@@ -13,6 +13,7 @@ from translation import Translation
 
 from .fsub import wc_msg
 
+
 @bot.on_callback_query(filters.regex(pattern=r"verify_cq\((.+?)\)"))
 async def _verify_user_(_, c_q: CallbackQuery):
     _a, _b = c_q.matches[0].group(1).split(" ", maxsplit=1)
