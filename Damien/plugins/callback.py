@@ -95,8 +95,8 @@ async def cb_handler(c, m):
                 InlineKeyboardButton("ℹ About Me", callback_data="about"),
                 InlineKeyboardButton("🌐 SocialMedia's", callback_data="sm"),
             ],
-            [InlineKeyboardButton("🤴 Developer 🤴", url="t.me/AmineSoukara")],
-        ]
+        [InlineKeyboardButton("🌪 Use inline!", switch_inline_query_current_chat="")],
+    ]
         markup = InlineKeyboardMarkup(button)
         await c.edit_message_text(
             chat_id=m.message.chat.id,
