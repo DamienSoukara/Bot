@@ -30,7 +30,7 @@ async def _verify_user_(_, c_q: CallbackQuery):
             reply_markup=buttons,
             reply_to_message_id=msg_id,
         )
-        await asyncio.sleep(120)
+        await asyncio.sleep(60)
         await msg.delete()
     else:
         await c_q.answer("This message is not for you. 😐", show_alert=True)
@@ -70,7 +70,7 @@ async def _on_joined_unmute_(_, c_q: CallbackQuery):
                     reply_markup=btns,
                     reply_to_message_id=msg_id,
                 )
-                await asyncio.sleep(120)
+                await asyncio.sleep(60)
                 await msg.delete()
         else:
             await c_q.answer(
