@@ -9,9 +9,11 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 
 from Damien import bot
-from translation import Translation
 from help import Messages as tr
+from translation import Translation
+
 from .fsub import wc_msg
+
 
 @bot.on_callback_query(help_callback_filter)
 def help_answer(client, callback_query):
@@ -49,6 +51,7 @@ def map(pos):
         ]
     return button
 
+
 @bot.on_callback_query(filters.regex(pattern=r"verify_cq\((.+?)\)"))
 async def _verify_user_(_, c_q: CallbackQuery):
     _a, _b = c_q.matches[0].group(1).split(" ", maxsplit=1)
@@ -69,6 +72,7 @@ async def _verify_user_(_, c_q: CallbackQuery):
         await msg.delete()
     else:
         await c_q.answer("This message is not for you. 😐", show_alert=True)
+
 
 @bot.on_callback_query(filters.regex(pattern=r"joined_unmute\((.+?)\)"))
 async def _on_joined_unmute_(_, c_q: CallbackQuery):
