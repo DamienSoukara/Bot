@@ -3,14 +3,14 @@
 # ©️ @AmineSoukara
 
 import pyrogram
-from pyrogram import Client, filters
+from Damien import bot
 from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from config import Config
 from config import Messages as tr
 from translation import Translation
 from .commands import start
 
-@Client.on_callback_query()
+@bot.on_callback_query()
 async def cb_handler(c, m):
   cb_data = m.data
 
@@ -93,3 +93,67 @@ async def cb_handler(c, m):
                            text=Translation.ABOUT.format(m.from_user.first_name),
                            disable_web_page_preview=True,
                            reply_markup=markup)
+
+@bot.on_callback_query(filters.regex(pattern=r"verify_cq\((.+?)\)"))
+async def _verify_user_(_, c_q: CallbackQuery):
+    _a, _b = c_q.matches[0].group(1).split(' ', maxsplit=1)
+    user_id = int(_a)
+    msg_id = int(_b)
+    if c_q.from_user.id == user_id:
+        await c_q.message.delete()
+        await bot.unban_chat_member(c_q.message.chat.id, user_id)
+        file_id, file_ref, text, buttons = await wc_msg(await bot.get_users(user_id))
+        msg = await bot.send_animation(
+            c_q.message.chat.id,
+            animation=file_id,
+            file_ref=file_ref,
+            caption=text, reply_markup=buttons,
+            reply_to_message_id=msg_id
+        )
+        await asyncio.sleep(120)
+        await msg.delete()
+    else:
+        await c_q.answer("This message is not for you. 😐", show_alert=True)
+
+
+@bot.on_callback_query(filters.regex(pattern=r"joined_unmute\((.+?)\)"))
+async def _on_joined_unmute_(_, c_q: CallbackQuery):
+    if not c_q.message.chat:
+        return
+    _a, _b = c_q.matches[0].group(1).split(' ', maxsplit=1)
+    user_id = int(_a)
+    msg_id = int(_b)
+    bot_id = (await bot.get_me()).id
+    chat_id = c_q.message.chat.id
+
+    user = await bot.get_users(user_id)
+
+    if c_q.from_user.id == user_id:
+        get_user = await bot.get_chat_member(chat_id, user_id)
+        if get_user.restricted_by and get_user.restricted_by.id == bot_id:
+            try:
+                await bot.get_chat_member("DamienSoukara", user_id)
+            except UserNotParticipant:
+                await c_q.answer(
+                    "Click on Join Now button to Join our Updates Channel"
+                    " and click on Unmute me Button again.", show_alert=True)
+            else:
+                await c_q.message.delete()
+                await bot.unban_chat_member(c_q.message.chat.id, user_id)
+                f_d, f_r, txt, btns = await wc_msg(user)
+                msg = await bot.send_animation(
+                    c_q.message.chat.id,
+                    animation=f_d,
+                    file_ref=f_r,
+                    caption=txt, reply_markup=btns,
+                    reply_to_message_id=msg_id
+                )
+                await asyncio.sleep(120)
+                await msg.delete()
+        else:
+            await c_q.answer(
+                "Admins Muted you for another reason, I Can't unmute you.",
+                show_alert=True)
+    else:
+        await c_q.answer(
+            f"This Message is Only for {user.first_name}", show_alert=True)
