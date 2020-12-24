@@ -29,9 +29,9 @@ from pyrogram.types import (
     InlineQueryResultPhoto,
     InputTextMessageContent,
 )
+from utils import docs
 
 from Damien import bot
-from utils import docs
 
 NEXT_OFFSET = 25
 CACHE_TIME = 5
