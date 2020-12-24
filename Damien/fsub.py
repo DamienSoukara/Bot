@@ -31,9 +31,9 @@ async def _verify_msg_(_, msg: Message):
             await asyncio.sleep(120)
             await reply.delete()
         else:
-            await bot.restrict_chat_member(chat_id, member.id, ChatPermissions())
+            await Client.restrict_chat_member(chat_id, member.id, ChatPermissions())
             try:
-                await bot.get_chat_member("DamienSoukara", member.id)
+                await Client.get_chat_member("DamienSoukara", member.id)
             except UserNotParticipant:
                 await force_sub(msg, member)
             else:
@@ -79,7 +79,7 @@ __Click on Join Now and Unmute yourself.__ """
 
 async def wc_msg(user):
     """ arguments and reply_markup for sending after verify """
-    gif = await bot.get_messages("damienhelp", 25293)
+    gif = await Client.get_messages("damienhelp", 25293)
     file_id = gif.animation.file_id
     file_ref = gif.animation.file_ref
     text = f""" **Welcome** {user.mention},
@@ -104,9 +104,9 @@ async def _verify_user_(_, c_q: CallbackQuery):
     msg_id = int(_b)
     if c_q.from_user.id == user_id:
         await c_q.message.delete()
-        await bot.unban_chat_member(c_q.message.chat.id, user_id)
-        file_id, file_ref, text, buttons = await wc_msg(await bot.get_users(user_id))
-        msg = await bot.send_animation(
+        await Client.unban_chat_member(c_q.message.chat.id, user_id)
+        file_id, file_ref, text, buttons = await wc_msg(await Client.get_users(user_id))
+        msg = await Client.send_animation(
             c_q.message.chat.id,
             animation=file_id,
             file_ref=file_ref,
@@ -126,25 +126,25 @@ async def _on_joined_unmute_(_, c_q: CallbackQuery):
     _a, _b = c_q.matches[0].group(1).split(' ', maxsplit=1)
     user_id = int(_a)
     msg_id = int(_b)
-    bot_id = (await bot.get_me()).id
+    bot_id = (await Client.get_me()).id
     chat_id = c_q.message.chat.id
 
-    user = await bot.get_users(user_id)
+    user = await Client.get_users(user_id)
 
     if c_q.from_user.id == user_id:
-        get_user = await bot.get_chat_member(chat_id, user_id)
+        get_user = await Client.get_chat_member(chat_id, user_id)
         if get_user.restricted_by and get_user.restricted_by.id == bot_id:
             try:
-                await bot.get_chat_member("DamienSoukara", user_id)
+                await Client.get_chat_member("DamienSoukara", user_id)
             except UserNotParticipant:
                 await c_q.answer(
                     "Click on Join Now button to Join our Updates Channel"
                     " and click on Unmute me Button again.", show_alert=True)
             else:
                 await c_q.message.delete()
-                await bot.unban_chat_member(c_q.message.chat.id, user_id)
+                await Client.unban_chat_member(c_q.message.chat.id, user_id)
                 f_d, f_r, txt, btns = await wc_msg(user)
-                msg = await bot.send_animation(
+                msg = await Client.send_animation(
                     c_q.message.chat.id,
                     animation=f_d,
                     file_ref=f_r,
