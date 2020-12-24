@@ -1,10 +1,10 @@
 import logging
 
-from help import Messages as tr
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from Damien import bot
+from help import Messages as tr
 from translation import Translation
 
 logging.basicConfig(level=logging.INFO)
