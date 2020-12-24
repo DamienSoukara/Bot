@@ -14,7 +14,7 @@ LOGO_DATA = []
 MSG_IDS = [25375, 25340, 25369]
 
 
-@bot.on_message(filters.private & filters.command("alive") & cus_filters.auth_chats)
+@bot.on_message(filters.private & filters.command("alive"))
 async def _alive(_, message: Message):
     try:
         await _sendit(message.chat.id)
