@@ -67,7 +67,9 @@ __Click on Join Now and Unmute yourself.__ """
     button = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="💬 Join Now", url="https://t.me/DamienSoukara"),
+                InlineKeyboardButton(
+                    text="💬 Join Now", url="https://t.me/DamienSoukara"
+                ),
                 InlineKeyboardButton(
                     text="🔕 Unmute Me",
                     callback_data=f"joined_unmute({user.id} {msg.message_id})",
@@ -85,12 +87,6 @@ async def wc_msg(user):
     text = f""" **Welcome** {user.mention},
 __Check out the Button below. and feel free to ask here.__ 🤘 """
     buttons = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    text="📨 Feedback", url="https://t.me/DamienRobot"
-                )
-            ]
-        ]
+        [[InlineKeyboardButton(text="📨 Feedback", url="https://t.me/DamienRobot")]]
     )
     return file_id, text, buttons
