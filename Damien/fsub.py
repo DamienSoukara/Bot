@@ -5,12 +5,12 @@ from pyrogram.types import (
     Message, ChatPermissions, CallbackQuery,
     InlineKeyboardMarkup, InlineKeyboardButton)
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
+from pyrogram import Client
 
 from Damien import cus_filters
 from Damien.utils import check_bot_rights
 
-
-@bot.on_message(
+@Client.on_message(
     filters.group & filters.new_chat_members & cus_filters.auth_chats)
 async def _verify_msg_(_, msg: Message):
     """ Verify Msg for New chat Members """
@@ -97,7 +97,7 @@ __Check out the Button below. and feel free to ask here.__ 🤘 """
     return file_id, file_ref, text, buttons
 
 
-@bot.on_callback_query(filters.regex(pattern=r"verify_cq\((.+?)\)"))
+@Client.on_callback_query(filters.regex(pattern=r"verify_cq\((.+?)\)"))
 async def _verify_user_(_, c_q: CallbackQuery):
     _a, _b = c_q.matches[0].group(1).split(' ', maxsplit=1)
     user_id = int(_a)
@@ -119,7 +119,7 @@ async def _verify_user_(_, c_q: CallbackQuery):
         await c_q.answer("This message is not for you. 😐", show_alert=True)
 
 
-@bot.on_callback_query(filters.regex(pattern=r"joined_unmute\((.+?)\)"))
+@Client.on_callback_query(filters.regex(pattern=r"joined_unmute\((.+?)\)"))
 async def _on_joined_unmute_(_, c_q: CallbackQuery):
     if not c_q.message.chat:
         return
