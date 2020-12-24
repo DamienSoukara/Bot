@@ -29,7 +29,7 @@ async def _refresh_data():
         if not msg.animation:
             continue
         gif = msg.animation
-        LOGO_DATA.append((gif.file_id, gif.file_ref))
+        LOGO_DATA.append((gif.file_id))
 
 
 async def _sendit(chat_id):
@@ -47,20 +47,19 @@ async def _sendit(chat_id):
                     text="License",
                     url=(
                         "https://github.com/"
-                        "UsergeTeam/Userge-Assistant/blob/master/LICENSE"
+                        "AmineSoukara"
                     ),
                 ),
                 InlineKeyboardButton(
-                    text="Repo", url="https://github.com/UsergeTeam/Userge-Assistant"
+                    text="Repo", url="https://github.com/"
                 ),
             ]
         ]
     )
-    file_id, file_ref = random.choice(LOGO_DATA)
+    file_id = random.choice(LOGO_DATA)
     await bot.send_animation(
         chat_id=chat_id,
         animation=file_id,
-        file_ref=file_ref,
         caption=caption,
         reply_markup=button,
     )
