@@ -1,4 +1,4 @@
-from pyrogram import __version__, emoji
+from pyrogram import Client, __version__, emoji
 from pyrogram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -8,7 +8,6 @@ from pyrogram.types import (
     InputTextMessageContent,
 )
 
-from pyrogram import Client
 from Damien.utils import docs
 
 NEXT_OFFSET = 25
