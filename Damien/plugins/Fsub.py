@@ -50,7 +50,7 @@ To Chat here, Please click on the button below. """
         [
             [
                 InlineKeyboardButton(
-                    text="Verify now 🤖",
+                    text="Verify Now 🤖",
                     callback_data=f"verify_cq({user.id} {msg.message_id})",
                 )
             ]
@@ -67,9 +67,9 @@ __Click on Join Now and Unmute yourself.__ """
     button = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="Join Now", url="https://t.me/DamienSoukara"),
+                InlineKeyboardButton(text="💬 Join Now", url="https://t.me/DamienSoukara"),
                 InlineKeyboardButton(
-                    text="Unmute Me",
+                    text="🔕 Unmute Me",
                     callback_data=f"joined_unmute({user.id} {msg.message_id})",
                 ),
             ]
@@ -88,7 +88,7 @@ __Check out the Button below. and feel free to ask here.__ 🤘 """
         [
             [
                 InlineKeyboardButton(
-                    text="More info.", url="https://t.me/DamienSoukara/637843"
+                    text="📨 Feedback", url="https://t.me/DamienRobot"
                 )
             ]
         ]
