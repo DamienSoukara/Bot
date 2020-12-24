@@ -3,7 +3,6 @@ import asyncio
 from pyrogram import filters
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.types import (
-    CallbackQuery,
     ChatPermissions,
     InlineKeyboardButton,
     InlineKeyboardMarkup,

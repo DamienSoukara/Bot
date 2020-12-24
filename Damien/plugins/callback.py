@@ -5,18 +5,14 @@
 import asyncio
 
 from pyrogram import filters
-from pyrogram.types import (
-    Message, ChatPermissions, CallbackQuery,
-    InlineKeyboardMarkup, InlineKeyboardButton)
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
+from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 
-from Damien import bot, cus_filters
-from Damien.utils import check_bot_rights
-from config import Config
-from config import Messages as tr
+from Damien import bot
 from translation import Translation
-from .commands import start
-from .fsub import wc_msg, force_sub, verify_keyboard
+
+from .fsub import wc_msg
+
 
 @bot.on_callback_query(filters.regex(pattern=r"verify_cq\((.+?)\)"))
 async def _verify_user_(_, c_q: CallbackQuery):
@@ -84,86 +80,117 @@ async def _on_joined_unmute_(_, c_q: CallbackQuery):
     else:
         await c_q.answer(f"This Message is Only for {user.first_name}", show_alert=True)
 
+
 @bot.on_callback_query()
 async def cb_handler(c, m):
-  cb_data = m.data
+    cb_data = m.data
 
-  if "home" in cb_data:
-      button = [[
+    if "home" in cb_data:
+        button = [
+            [
                 InlineKeyboardButton("💬 My Channel", url="t.me/DamienSoukara"),
                 InlineKeyboardButton("🗣 My Group", url="t.me/damienhelp"),
-                ],
-                [
+            ],
+            [
                 InlineKeyboardButton("ℹ About Me", callback_data="about"),
-                InlineKeyboardButton("🌐 SocialMedia's", callback_data="sm")
-                ],
-                [InlineKeyboardButton("🤴 Developer 🤴", url="t.me/AmineSoukara")]]
-      markup = InlineKeyboardMarkup(button)
-      await c.edit_message_text(chat_id=m.message.chat.id,
-                           message_id=m.message.message_id,
-                           text=Translation.START_MSG.format(m.from_user.first_name),
-                           reply_markup=markup)
+                InlineKeyboardButton("🌐 SocialMedia's", callback_data="sm"),
+            ],
+            [InlineKeyboardButton("🤴 Developer 🤴", url="t.me/AmineSoukara")],
+        ]
+        markup = InlineKeyboardMarkup(button)
+        await c.edit_message_text(
+            chat_id=m.message.chat.id,
+            message_id=m.message.message_id,
+            text=Translation.START_MSG.format(m.from_user.first_name),
+            reply_markup=markup,
+        )
 
-  if "helpx" in cb_data:
+    if "helpx" in cb_data:
         button = [[InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
-        await c.edit_message_text(chat_id=m.message.chat.id,
-                           message_id=m.message.message_id,
-                           text=Translation.HELP_USER.format(m.from_user.first_name),
-                           disable_web_page_preview=True,
-                           reply_markup=markup)
+        await c.edit_message_text(
+            chat_id=m.message.chat.id,
+            message_id=m.message.message_id,
+            text=Translation.HELP_USER.format(m.from_user.first_name),
+            disable_web_page_preview=True,
+            reply_markup=markup,
+        )
 
-  if "whtsp" in cb_data:
-        button = [[InlineKeyboardButton("🔙 Back", callback_data="sm"),
-                InlineKeyboardButton("🏠 Home", callback_data="home")]]
+    if "whtsp" in cb_data:
+        button = [
+            [
+                InlineKeyboardButton("🔙 Back", callback_data="sm"),
+                InlineKeyboardButton("🏠 Home", callback_data="home"),
+            ]
+        ]
         markup = InlineKeyboardMarkup(button)
-        await c.edit_message_text(chat_id=m.message.chat.id,
-                           message_id=m.message.message_id,
-                           text=Translation.WHTSP,
-                           disable_web_page_preview=True,
-                           reply_markup=markup)
+        await c.edit_message_text(
+            chat_id=m.message.chat.id,
+            message_id=m.message.message_id,
+            text=Translation.WHTSP,
+            disable_web_page_preview=True,
+            reply_markup=markup,
+        )
 
-  if "ig" in cb_data:
-        button = [[InlineKeyboardButton("🔙 Back", callback_data="sm"),
-                InlineKeyboardButton("🏠 Home", callback_data="home")]]
+    if "ig" in cb_data:
+        button = [
+            [
+                InlineKeyboardButton("🔙 Back", callback_data="sm"),
+                InlineKeyboardButton("🏠 Home", callback_data="home"),
+            ]
+        ]
         markup = InlineKeyboardMarkup(button)
-        await c.edit_message_text(chat_id=m.message.chat.id,
-                           message_id=m.message.message_id,
-                           text=Translation.IG,
-                           disable_web_page_preview=True,
-                           reply_markup=markup)
+        await c.edit_message_text(
+            chat_id=m.message.chat.id,
+            message_id=m.message.message_id,
+            text=Translation.IG,
+            disable_web_page_preview=True,
+            reply_markup=markup,
+        )
 
-  if "fb" in cb_data:
-        button = [[InlineKeyboardButton("🔙 Back", callback_data="sm"),
-                InlineKeyboardButton("🏠 Home", callback_data="home")]]
+    if "fb" in cb_data:
+        button = [
+            [
+                InlineKeyboardButton("🔙 Back", callback_data="sm"),
+                InlineKeyboardButton("🏠 Home", callback_data="home"),
+            ]
+        ]
         markup = InlineKeyboardMarkup(button)
-        await c.edit_message_text(chat_id=m.message.chat.id,
-                           message_id=m.message.message_id,
-                           text=Translation.FB,
-                           disable_web_page_preview=True,
-                           reply_markup=markup)
+        await c.edit_message_text(
+            chat_id=m.message.chat.id,
+            message_id=m.message.message_id,
+            text=Translation.FB,
+            disable_web_page_preview=True,
+            reply_markup=markup,
+        )
 
-  if "sm" in cb_data:
-        button = [[
+    if "sm" in cb_data:
+        button = [
+            [
                 InlineKeyboardButton("🌐 Facebook", callback_data="fb"),
                 InlineKeyboardButton("🌐 Instagram", callback_data="ig"),
-                ],
-                [
+            ],
+            [
                 InlineKeyboardButton("🌐 WhatsApp", callback_data="whtsp"),
-                InlineKeyboardButton("🤖 Feedback", url="t.me/DamienRobot")
-                ],
-                [InlineKeyboardButton("🏠 Home", callback_data="home")]]
+                InlineKeyboardButton("🤖 Feedback", url="t.me/DamienRobot"),
+            ],
+            [InlineKeyboardButton("🏠 Home", callback_data="home")],
+        ]
         markup = InlineKeyboardMarkup(button)
-        await c.edit_message_text(chat_id=m.message.chat.id,
-                           message_id=m.message.message_id,
-                           text=Translation.MOREHELP.format(m.from_user.first_name),
-                           reply_markup=markup)
+        await c.edit_message_text(
+            chat_id=m.message.chat.id,
+            message_id=m.message.message_id,
+            text=Translation.MOREHELP.format(m.from_user.first_name),
+            reply_markup=markup,
+        )
 
-  if "about" in cb_data:
+    if "about" in cb_data:
         button = [[InlineKeyboardButton("🏠 Home", callback_data="home")]]
         markup = InlineKeyboardMarkup(button)
-        await c.edit_message_text(chat_id=m.message.chat.id,
-                           message_id=m.message.message_id,
-                           text=Translation.ABOUT.format(m.from_user.first_name),
-                           disable_web_page_preview=True,
-                           reply_markup=markup)
+        await c.edit_message_text(
+            chat_id=m.message.chat.id,
+            message_id=m.message.message_id,
+            text=Translation.ABOUT.format(m.from_user.first_name),
+            disable_web_page_preview=True,
+            reply_markup=markup,
+        )

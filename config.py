@@ -16,7 +16,8 @@ class Config:
         AUTH_CHATS.update(map(int, os.environ.get("AUTH_CHATS").split()))
     WHITELIST_CHATS = set([-1001465749479])  # @UserGeSpam
     if os.environ.get("WHITELIST_CHATS"):
-        WHITELIST_CHATS.update(map(int, os.environ.get("WHITELIST_CHATS").split()))
+        WHITELIST_CHATS.update(
+            map(int, os.environ.get("WHITELIST_CHATS").split()))
     DEV_USERS = (
         853393439,  # @me
         1110621941,  # @PhycoNinja13b
@@ -28,20 +29,14 @@ class Config:
 
 
 class Messages():
-      HELP_MSG = [
+    HELP_MSG = [
         ".",
-
         "**Hello 🌍 World**",
-        
         "Another Text 😅",
-        
-        "**[👨‍💻](https://i.imgur.com/TaOKIkf.gif) Developed By : @AmineSoukara**"
-      ]
+        "**[👨‍💻](https://i.imgur.com/TaOKIkf.gif) Developed By : @AmineSoukara**"]
 
-      X_MSG = "Hey! [👋](https://i.imgur.com/Ljhp9Kk.gif) [{}](tg://user?id={}) \n©️ Read /help & /about"
+    X_MSG = "Hey! [👋](https://i.imgur.com/Ljhp9Kk.gif) [{}](tg://user?id={}) \n©️ Read /help & /about"
 
-      ABOUT_MSG = "©️ https://t.me/DamienSoukara"
+    ABOUT_MSG = "©️ https://t.me/DamienSoukara"
 
-      START = "HI BABY"
-
-
+    START = "HI BABY"

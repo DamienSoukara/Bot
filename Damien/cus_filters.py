@@ -1,4 +1,4 @@
-# Copyright 
+# Copyright
 
 __all__ = ["auth_chats", "auth_users", "whitelist_chats"]
 

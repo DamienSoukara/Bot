@@ -1,9 +1,12 @@
-import logging
-import pyrogram
-from pyrogram import Client, filters
+from pyrogram import Client
 from pyrogram.types import (
-    InlineQuery, InlineQueryResultArticle, InputTextMessageContent,
-    InlineQueryResultPhoto, InlineKeyboardButton, InlineKeyboardMarkup)
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    InlineQuery,
+    InlineQueryResultArticle,
+    InlineQueryResultPhoto,
+    InputTextMessageContent,
+)
 
 from Damien.utils import docs
 
@@ -31,12 +34,9 @@ async def inline_docs(_, i_q: InlineQuery):
                     f"{docs.intro}"
                     f"`Online Documentation Page for UserGe Decorators.`"
                 ),
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        "📚 Online docs",
-                        url=docs.decorators
-                    )
-                ]]),
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("📚 Online docs", url=docs.decorators)]]
+                ),
                 thumb_url=docs.USERGE_THUMB,
             )
         )
@@ -49,7 +49,7 @@ async def inline_docs(_, i_q: InlineQuery):
                     input_message_content=InputTextMessageContent(
                         docs.intro + i[2], disable_web_page_preview=True
                     ),
-                    thumb_url=docs.DECORATORS_THUMB
+                    thumb_url=docs.DECORATORS_THUMB,
                 )
             )
     elif query == "deployment":
@@ -61,12 +61,9 @@ async def inline_docs(_, i_q: InlineQuery):
                     f"{docs.intro}"
                     f"`Online Documentation Page for UserGe Deployment.`"
                 ),
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        "📚 Online docs",
-                        url=docs.deployment
-                    )
-                ]]),
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("📚 Online docs", url=docs.deployment)]]
+                ),
                 thumb_url=docs.USERGE_THUMB,
             )
         )
@@ -79,7 +76,7 @@ async def inline_docs(_, i_q: InlineQuery):
                     input_message_content=InputTextMessageContent(
                         docs.intro + i[2], disable_web_page_preview=True
                     ),
-                    thumb_url=docs.DEPLOYMENT_THUMB
+                    thumb_url=docs.DEPLOYMENT_THUMB,
                 )
             )
     elif query in ["var", "vars"]:
@@ -88,15 +85,11 @@ async def inline_docs(_, i_q: InlineQuery):
                 title="VARS",
                 description="UserGe Vars online documentation page",
                 input_message_content=InputTextMessageContent(
-                    f"{docs.intro}"
-                    f"`Online Documentation Page for UserGe Vars.`"
+                    f"{docs.intro}" f"`Online Documentation Page for UserGe Vars.`"
                 ),
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        "📚 Online docs",
-                        url=docs.vars
-                    )
-                ]]),
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("📚 Online docs", url=docs.vars)]]
+                ),
                 thumb_url=docs.USERGE_THUMB,
             )
         )
@@ -109,7 +102,7 @@ async def inline_docs(_, i_q: InlineQuery):
                     input_message_content=InputTextMessageContent(
                         docs.intro + i[2], disable_web_page_preview=True
                     ),
-                    thumb_url=docs.VARS_THUMB
+                    thumb_url=docs.VARS_THUMB,
                 )
             )
     elif query in ["mode", "modes"]:
@@ -118,15 +111,11 @@ async def inline_docs(_, i_q: InlineQuery):
                 title="UserGe Modes",
                 description="UserGe Modes online documentation page",
                 input_message_content=InputTextMessageContent(
-                    f"{docs.intro}"
-                    f"`Online Documentation Page for UserGe Modes.`"
+                    f"{docs.intro}" f"`Online Documentation Page for UserGe Modes.`"
                 ),
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        "📚 Online docs",
-                        url=docs.modes
-                    )
-                ]]),
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("📚 Online docs", url=docs.modes)]]
+                ),
                 thumb_url=docs.USERGE_THUMB,
             )
         )
@@ -139,7 +128,7 @@ async def inline_docs(_, i_q: InlineQuery):
                     input_message_content=InputTextMessageContent(
                         docs.intro + i[2], disable_web_page_preview=True
                     ),
-                    thumb_url=i[3]
+                    thumb_url=i[3],
                 )
             )
     elif query in ["example", "examples"]:
@@ -151,12 +140,9 @@ async def inline_docs(_, i_q: InlineQuery):
                     f"{docs.intro}"
                     f"`Online Documentation Page for UserGe Example-Plugins.`"
                 ),
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        "📚 Online docs",
-                        url=docs.examples
-                    )
-                ]]),
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("📚 Online docs", url=docs.examples)]]
+                ),
                 thumb_url=docs.USERGE_THUMB,
             )
         )
@@ -169,7 +155,7 @@ async def inline_docs(_, i_q: InlineQuery):
                     input_message_content=InputTextMessageContent(
                         docs.intro + i[2], disable_web_page_preview=True
                     ),
-                    thumb_url=docs.EXAMPLE_THUMB
+                    thumb_url=docs.EXAMPLE_THUMB,
                 )
             )
     elif query in ["faq", "faqs"]:
@@ -178,15 +164,11 @@ async def inline_docs(_, i_q: InlineQuery):
                 title="UserGe-FAQs",
                 description="UserGe-FAQs online documentation page",
                 input_message_content=InputTextMessageContent(
-                    f"{docs.intro}"
-                    f"`Online Documentation Page for UserGe-FAQs.`"
+                    f"{docs.intro}" f"`Online Documentation Page for UserGe-FAQs.`"
                 ),
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        "📚 Online docs",
-                        url=docs.faqs
-                    )
-                ]]),
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("📚 Online docs", url=docs.faqs)]]
+                ),
                 thumb_url=docs.USERGE_THUMB,
             )
         )
@@ -199,9 +181,9 @@ async def inline_docs(_, i_q: InlineQuery):
                     input_message_content=InputTextMessageContent(
                         f"{docs.intro}**FAQ {i+1}:-**\n"
                         f"[{docs.FAQS[i][0]}]({docs.FAQS[i][1]})",
-                        disable_web_page_preview=True
+                        disable_web_page_preview=True,
                     ),
-                    thumb_url=docs.FAQS_THUMB
+                    thumb_url=docs.FAQS_THUMB,
                 )
             )
     elif query in ["error", "errors"]:
@@ -209,15 +191,11 @@ async def inline_docs(_, i_q: InlineQuery):
             InlineQueryResultArticle(
                 title="Errors and their Fixes",
                 input_message_content=InputTextMessageContent(
-                    f"{docs.intro}"
-                    f"`Online Documentation Page for UserGe-Errors.`"
+                    f"{docs.intro}" f"`Online Documentation Page for UserGe-Errors.`"
                 ),
-                reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        "📚 Online docs",
-                        url=docs.errors
-                    )
-                ]]),
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("📚 Online docs", url=docs.errors)]]
+                ),
                 thumb_url=docs.ERRORS_THUMB,
             )
         )
@@ -229,21 +207,21 @@ async def inline_docs(_, i_q: InlineQuery):
                     title=f"{docs.ERRORS[i][0]}",
                     caption=(
                         f"[{docs.ERRORS[i][0]}]({docs.errors}{docs.ERRORS[i][1]})"
-                    )
+                    ),
                 )
             )
     if results:
-        switch_pm_text = f"📖 {len(results)} Results for \"{query}\""
+        switch_pm_text = f'📖 {len(results)} Results for "{query}"'
         await i_q.answer(
             results=results,
             cache_time=5,
             switch_pm_text=switch_pm_text,
-            switch_pm_parameter="start"
+            switch_pm_parameter="start",
         )
     else:
         await i_q.answer(
             results=[],
             cache_time=5,
             switch_pm_text=f'❌ No results for "{query}"',
-            switch_pm_parameter="okay"
+            switch_pm_parameter="okay",
         )

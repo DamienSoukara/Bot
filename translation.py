@@ -7,7 +7,7 @@ Welcome To My Bot
     HELP_USER = """Hi **{}** 👋
 
 ● **For URL Uploader** :
-    
+
 ○ Send Url. [ Link|New Name With Extension ] (Optional)
 ○ Send Custom Thumbnail. (Optional)
 ○ Select The Button :
@@ -28,7 +28,7 @@ Welcome To My Bot
 
     ABOUT = """Hi {},
 
-**📝 Language:** Python 3 
+**📝 Language:** Python 3
 
 **🧰 Framework:** Pyrogram
 
@@ -97,7 +97,7 @@ You can use /rename command after receiving file to rename it with custom thumbn
     ZIP_UPLOADED_STR = "MY WHATSAPP NUMBER"
 
     MOREHELP = """[💬](https://i.imgur.com/z0gaQ0Y.jpg)
-Extra Help Haha 
+Extra Help Haha
 """
 
     YTDL = """● YouTube DL
@@ -110,7 +110,7 @@ Extra Help Haha
 NB : It is Recommended To Use A Custom Thubnail Because, Some Time Bot Wont Upload The File Without a Custom Thumbnail.
 """
     URLDL = """● For URL Uploader :
-    
+
 ○ Send Url. [ Link|New Name With Extension ] (Optional)
 ○ Send Custom Thumbnail. (Optional)
 ○ Select The Button :
