@@ -33,7 +33,7 @@ async def start(c, m):
             InlineKeyboardButton("ℹ About Me", callback_data="about"),
             InlineKeyboardButton("🤔 Social Media's", callback_data="sm"),
         ],
-        [InlineKeyboardButton("🤴 Developer 🤴", url="t.me/AmineSoukara")],
+        [InlineKeyboardButton("🌪 Use inline!", switch_inline_query_current_chat="")],
     ]
     markup = InlineKeyboardMarkup(button)
     await c.send_photo(
