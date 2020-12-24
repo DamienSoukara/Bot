@@ -3,12 +3,12 @@
 __all__ = ["auth_chats", "auth_users", "whitelist_chats"]
 
 import asyncio
-import logging
 
 from pyrogram import filters, Client
 from pyrogram.types import Message
 
 from config import Config
+from . import logging
 
 _LOG = logging.getLogger(__name__)
 _FETCHING = False
