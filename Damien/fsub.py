@@ -33,7 +33,7 @@ async def _verify_msg_(_, msg: Message):
         else:
             await bot.restrict_chat_member(chat_id, member.id, ChatPermissions())
             try:
-                await bot.get_chat_member("DamienSoukara, member.id)
+                await bot.get_chat_member("DamienSoukara", member.id)
             except UserNotParticipant:
                 await force_sub(msg, member)
             else:
