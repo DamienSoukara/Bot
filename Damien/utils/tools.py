@@ -1,7 +1,6 @@
 import time
 import logging
 from pyrogram.types import Message
-from pyrogram import Client
 from Damien import bot
 from config import Config
 
