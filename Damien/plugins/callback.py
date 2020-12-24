@@ -11,7 +11,7 @@ from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMa
 from Damien import bot
 from translation import Translation
 
-from .fsub import wc_msg
+from .fsub import wc_msg, force_sub, verify_keyboard
 
 
 @bot.on_callback_query(filters.regex(pattern=r"verify_cq\((.+?)\)"))
