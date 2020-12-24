@@ -2,9 +2,16 @@
 # -*- coding: utf-8 -*-
 # ©️ @AmineSoukara
 
-import pyrogram
-from Damien import bot
-from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+import asyncio
+
+from pyrogram import filters
+from pyrogram.types import (
+    Message, ChatPermissions, CallbackQuery,
+    InlineKeyboardMarkup, InlineKeyboardButton)
+from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
+
+from Damien import bot, cus_filters
+from Damien.utils import check_bot_rights
 from config import Config
 from config import Messages as tr
 from translation import Translation
