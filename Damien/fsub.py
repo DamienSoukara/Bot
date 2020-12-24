@@ -6,8 +6,8 @@ from pyrogram.types import (
     InlineKeyboardMarkup, InlineKeyboardButton)
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 
-from assistant import bot, cus_filters
-from assistant.utils import check_bot_rights
+from Damien import cus_filters
+from Damien.utils import check_bot_rights
 
 
 @bot.on_message(
