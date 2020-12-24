@@ -1,14 +1,16 @@
 import logging
 
 from pyrogram import filters
+from pyrogram.errors import UserNotParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 
 from Damien import bot
 from help import Messages as tr
-from translation import Translation
 from helper_funcs.chat_base import TRChatBase
+from translation import Translation
+
 logging.basicConfig(level=logging.INFO)
+
 
 @bot.on_message(filters.command(["start"]))
 async def start(c, m):
@@ -21,15 +23,21 @@ async def start(c, m):
         try:
             user = await c.get_chat_member(update_channel, m.chat.id)
             if user.status == "kicked":
-               await m.reply_text("🤭 Sorry Dude, You are **B A N N E D 🤣🤣🤣**")
-               return
+                await m.reply_text("🤭 Sorry Dude, You are **B A N N E D 🤣🤣🤣**")
+                return
         except UserNotParticipant:
-            #await m.reply_text(f"Join @{update_channel} To Use Me")
+            # await m.reply_text(f"Join @{update_channel} To Use Me")
             await m.reply_text(
                 text="[●](https://i.imgur.com/t1JsZ0I.gif) **Join My Updates Channel To Mse Me : **",
-                reply_markup=InlineKeyboardMarkup([
-                    [ InlineKeyboardButton(text="Subscribe", url=f"https://t.me/{update_channel}")]
-              ])
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="Subscribe", url=f"https://t.me/{update_channel}"
+                            )
+                        ]
+                    ]
+                ),
             )
             return
         except Exception:
