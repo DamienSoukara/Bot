@@ -3,7 +3,7 @@ import logging
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from config import Messages as tr
+from help import Messages as tr
 from Damien import bot
 from translation import Translation
 
