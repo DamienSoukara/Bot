@@ -9,7 +9,7 @@ from . import Config, logging
 _LOG = logging.getLogger(__name__)
 START_TIME = time.time()
 
-plugins = dict(root="Damien")
+plugins = dict(root="Damien.plugins")
 bot = Client(
      'Damien Soukara',
       bot_token = Config.BOT_TOKEN,
