@@ -2,7 +2,7 @@ import logging
 
 from pyrogram import filters
 from pyrogram.errors import UserNotParticipant
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from config import Config
 from Damien import bot
@@ -14,11 +14,11 @@ logging.basicConfig(level=logging.INFO)
 
 
 @bot.on_message(filters.private)
-async def sub(c, m):
+async def sub(c, m: Message):
     if m.from_user.id in Config.BANNED_USERS:
         await m.reply_text("You are B A N N E D 🤣🤣🤣🤣 #Dev")
         return
-    TRChatBase(m.from_user.id, m.text)
+    TRChatBase(m.from_user.id, m.text, "start")
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
         try:
