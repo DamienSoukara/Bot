@@ -18,7 +18,7 @@ async def sub(c, m):
     if m.from_user.id in Config.BANNED_USERS:
         await m.reply_text("You are B A N N E D 🤣🤣🤣🤣 #Dev")
         return
-    TRChatBase(m.from_user.id, m.text, "start")
+    TRChatBase(m.from_user.id, m.text)
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
         try:
@@ -43,8 +43,6 @@ async def sub(c, m):
             return
         except Exception:
             await m.reply_text("Something Wrong. Contact @AmineSoukara")
-
-  else
 
 @bot.on_message(filters.command(["start"]))
 async def start(c, m):
