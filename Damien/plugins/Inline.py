@@ -38,7 +38,7 @@ async def inline(_, query: InlineQuery):
         return
 
     if query.from_user.id not in Config.BANNED_USERS:
-        continue 
+        continue
     if string == "":
         await query.answer(
             results=docs.DEFAULT_RESULTS,
