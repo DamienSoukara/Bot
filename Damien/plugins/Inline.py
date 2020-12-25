@@ -8,6 +8,7 @@ from pyrogram.types import (
     InputTextMessageContent,
 )
 
+from config import Config
 from Damien.utils import docs
 
 NEXT_OFFSET = 25
@@ -24,7 +25,8 @@ VERSION = __version__.split("-")[0]
 @Client.on_inline_query()
 async def inline(_, query: InlineQuery):
     string = query.query.lower()
-
+    if query.from_user.id in Config.BANNED_USERS:
+        return
     if string == "":
         await query.answer(
             results=docs.DEFAULT_RESULTS,
