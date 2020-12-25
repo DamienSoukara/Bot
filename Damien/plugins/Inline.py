@@ -38,9 +38,6 @@ async def inline(_, query: InlineQuery):
             switch_pm_parameter="help",
         )
 
-        return
-
-
 @Client.on_inline_query()
 async def inline(_, query: InlineQuery):
     string = query.query.lower()
