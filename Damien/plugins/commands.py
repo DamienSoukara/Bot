@@ -14,22 +14,22 @@ logging.basicConfig(level=logging.INFO)
 
 
 @bot.on_message(filters.private)
-def _sub(c, m):
+async def sub(c, m):
     if m.from_user.id in Config.BANNED_USERS:
-        m.reply_text("You are B A N N E D 🤣🤣🤣🤣 #Dev")
+        await m.reply_text("You are B A N N E D 🤣🤣🤣🤣 #Dev")
         return
-    TRChatBase(m.from_user.id, m.text, "")
+    TRChatBase(m.from_user.id, m.text, "start")
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
         try:
-            user = c.get_chat_member(update_channel, m.chat.id)
+            user = await c.get_chat_member(update_channel, m.chat.id)
             if user.status == "kicked":
-                m.reply_text("🤭 Sorry Dude, You are **B A N N E D** #Channel")
+                await m.reply_text("🤭 Sorry Dude, You are **B A N N E D** #Channel")
                 return
         except UserNotParticipant:
             # await m.reply_text(f"Join @{update_channel} To Use Me")
-             m.reply_text(
-                text="[●](https://i.imgur.com/t1JsZ0I.gif) **Join My Updates Channel To Use Me : **",
+            await m.reply_text(
+                text="[●](https://i.imgur.com/t1JsZ0I.gif) **Join My Updates Channel To Mse Me : **",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -42,9 +42,9 @@ def _sub(c, m):
             )
             return
         except Exception:
-            m.reply_text("Something Wrong. Contact @AmineSoukara")
-            return
+            await m.reply_text("Something Wrong. Contact @AmineSoukara")
 
+            else
 
 @bot.on_message(filters.command(["start"]))
 async def start(c, m):
