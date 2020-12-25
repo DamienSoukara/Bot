@@ -26,7 +26,17 @@ VERSION = __version__.split("-")[0]
 async def inline(_, query: InlineQuery):
     string = query.query.lower()
     if query.from_user.id in Config.BANNED_USERS:
-        return
+        continue
+    if string == "":
+        await query.answer(
+            results=docs.DEFAULT_RESULTS,
+            cache_time=CACHE_TIME,
+            switch_pm_text=f"{emoji.MAGNIFYING_GLASS_TILTED_RIGHT} Type to search Pyrogram Docs",
+            switch_pm_parameter="start",
+        )
+    else
+    if query.from_user.id not in Config.BANNED_USERS:
+        continue 
     if string == "":
         await query.answer(
             results=docs.DEFAULT_RESULTS,
