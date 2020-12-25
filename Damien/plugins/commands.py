@@ -2,21 +2,17 @@ import logging
 
 from pyrogram import filters
 from pyrogram.errors import UserNotParticipant
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
-from config import Config
-from Damien import bot
-from help import Messages as tr
-from helper_funcs.chat_base import TRChatBase
-from translation import Translation
-from pyrogram import filters
 from pyrogram.errors.exceptions import FileIdInvalid, FileReferenceEmpty
 from pyrogram.errors.exceptions.bad_request_400 import BadRequest
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
+from config import Config
 from Damien import bot, versions
 from Damien.bot import START_TIME
 from Damien.utils import time_formatter
+from help import Messages as tr
+from helper_funcs.chat_base import TRChatBase
+from translation import Translation
 
 logging.basicConfig(level=logging.INFO)
 
@@ -76,6 +72,7 @@ async def start(c, m):
         reply_to_message_id=m.message_id,
         reply_markup=markup,
     )
+
 
 @bot.on_message(filters.private & filters.command("alive"))
 async def _alive(_, message: Message):
