@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 @bot.on_message(filters.private)
-async def fsub(c, m):
+def _sub(c, m):
     if m.from_user.id in Config.BANNED_USERS:
         await m.reply_text("You are B A N N E D 🤣🤣🤣🤣 #Dev")
         return
@@ -44,7 +44,7 @@ async def fsub(c, m):
         except Exception:
             await m.reply_text("Something Wrong. Contact @AmineSoukara")
             return
-
+ 
 
 @bot.on_message(filters.command(["start"]))
 async def start(c, m):
