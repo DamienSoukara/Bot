@@ -19,7 +19,7 @@ async def sub(c, m: Message):
             chat_id=m.chat.id, message_ids=m.message_id, revoke=True
         )
         msg = await m.reply_text("You Are ❌ B A N N E D ❌ #Dev")
-        await asyncio.sleep(60)
+        await asyncio.sleep(15)
         await msg.delete()
         return
     TRChatBase(m.from_user.id, m.text, "start")
