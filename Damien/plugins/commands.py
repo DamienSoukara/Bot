@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO)
 @bot.on_message(filters.private)
 async def fsub(c, m):
     if m.from_user.id in Config.BANNED_USERS:
-        await m.reply_text("You are B A N N E D 🤣🤣🤣🤣")
+        await m.reply_text("You are B A N N E D 🤣🤣🤣🤣 #Dev")
         return
     TRChatBase(m.from_user.id, m.text, "start")
     update_channel = Config.UPDATE_CHANNEL
@@ -24,7 +24,7 @@ async def fsub(c, m):
         try:
             user = await c.get_chat_member(update_channel, m.chat.id)
             if user.status == "kicked":
-                await m.reply_text("🤭 Sorry Dude, You are **B A N N E D 🤣🤣🤣**")
+                await m.reply_text("🤭 Sorry Dude, You are **B A N N E D** #Channel")
                 return
         except UserNotParticipant:
             # await m.reply_text(f"Join @{update_channel} To Use Me")
@@ -43,6 +43,7 @@ async def fsub(c, m):
             return
         except Exception:
             await m.reply_text("Something Wrong. Contact @AmineSoukara")
+            return
 
 
 @bot.on_message(filters.command(["start"]))
