@@ -1,6 +1,7 @@
 import logging
 import random
 import time
+import asyncio
 
 from pyrogram import filters
 from pyrogram.errors import UserNotParticipant
@@ -25,7 +26,12 @@ MSG_IDS = [25375, 25340, 25369]
 @bot.on_message(filters.command(["start"]))
 async def start(c, m):
     if m.from_user.id in Config.BANNED_USERS:
-        await m.reply_text("You are B A N N E D 🤣 #Dev")
+        await c.delete_messages(
+            chat_id=m.chat.id, message_ids=m.message_id, revoke=True
+        )
+        msg = await m.reply_text("You Are ❌ B A N N E D ❌ #Dev")
+        await asyncio.sleep(15)
+        await msg.delete()
         return
     TRChatBase(m.from_user.id, m.text, "start")
     update_channel = Config.UPDATE_CHANNEL
