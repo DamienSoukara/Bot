@@ -13,8 +13,8 @@ from translation import Translation
 logging.basicConfig(level=logging.INFO)
 
 
-@bot.on_message(filters.command(["start"]))
-async def start(c, m):
+@bot.on_message(filters.private)
+async def fsub(c, m):
     if m.from_user.id in Config.BANNED_USERS:
         await m.reply_text("You are B A N N E D 🤣🤣🤣🤣")
         return
@@ -43,7 +43,9 @@ async def start(c, m):
             return
         except Exception:
             await m.reply_text("Something Wrong. Contact @AmineSoukara")
-            return
+
+@bot.on_message(filters.command(["start"]))
+async def start(c, m):
     chatID = m.chat.id
     photoUrl = "https://i.imgur.com/x2igrLQ.jpg"
     button = [
