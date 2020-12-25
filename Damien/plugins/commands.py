@@ -1,13 +1,10 @@
 import logging
 
 from pyrogram import filters
-from pyrogram.errors import UserNotParticipant
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from config import Config
 from Damien import bot
 from help import Messages as tr
-from helper_funcs.chat_base import TRChatBase
 from translation import Translation
 
 logging.basicConfig(level=logging.INFO)
