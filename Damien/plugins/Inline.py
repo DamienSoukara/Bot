@@ -34,7 +34,9 @@ async def inline(_, query: InlineQuery):
             switch_pm_text=f"{emoji.MAGNIFYING_GLASS_TILTED_RIGHT} Type to search Pyrogram Docs",
             switch_pm_parameter="start",
         )
-    else
+
+        return
+
     if query.from_user.id not in Config.BANNED_USERS:
         continue 
     if string == "":
