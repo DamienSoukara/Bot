@@ -1,4 +1,5 @@
 import logging
+import asyncio
 
 from pyrogram import filters
 from pyrogram.errors import UserNotParticipant
@@ -18,6 +19,8 @@ async def sub(c, m: Message):
             chat_id=m.chat.id, message_ids=m.message_id, revoke=True
         )
         await m.reply_text("You are B A N N E D 🤣🤣🤣🤣 #Dev")
+        await asyncio.sleep(60)
+        await msg.delete()
         return
     TRChatBase(m.from_user.id, m.text, "start")
     update_channel = Config.UPDATE_CHANNEL
