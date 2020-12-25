@@ -29,9 +29,9 @@ async def inline(_, query: InlineQuery):
         continue
     if string == "":
         await query.answer(
-            results=docs.DEFAULT_RESULTS,
+            results=docs.BAN_RESULTS,
             cache_time=CACHE_TIME,
-            switch_pm_text=f"{emoji.MAGNIFYING_GLASS_TILTED_RIGHT} Type to search Pyrogram Docs",
+            switch_pm_text=f"{emoji.MAGNIFYING_GLASS_TILTED_RIGHT} You're Banned",
             switch_pm_parameter="start",
         )
 
