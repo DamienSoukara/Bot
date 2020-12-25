@@ -18,7 +18,7 @@ async def sub(c, m: Message):
         await c.delete_messages(
             chat_id=m.chat.id, message_ids=m.message_id, revoke=True
         )
-        await m.reply_text("You are B A N N E D 🤣🤣🤣🤣 #Dev")
+        msg = await m.reply_text("You Are ❌ B A N N E D ❌ #Dev")
         await asyncio.sleep(60)
         await msg.delete()
         return
