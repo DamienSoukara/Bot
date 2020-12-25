@@ -27,7 +27,7 @@ async def inline(_, query: InlineQuery):
     string = query.query.lower()
 
     if string == "":
-    if query.from_user.id in Config.BANNED_USERS:
+    elif query.from_user.id in Config.BANNED_USERS:
         await query.answer(
             results=docs.BAN_RESULTS,
             cache_time=CACHE_TIME,
@@ -37,7 +37,7 @@ async def inline(_, query: InlineQuery):
 
         return
 
-    if string == "":
+    elif query.from_user.id not in Config.BANNED_USERS:
         await query.answer(
             results=docs.DEFAULT_RESULTS,
             cache_time=CACHE_TIME,
