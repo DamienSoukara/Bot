@@ -44,7 +44,7 @@ def _sub(c, m):
         except Exception:
             await m.reply_text("Something Wrong. Contact @AmineSoukara")
             return
- 
+
 
 @bot.on_message(filters.command(["start"]))
 async def start(c, m):
