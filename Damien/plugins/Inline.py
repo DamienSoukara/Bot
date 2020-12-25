@@ -21,6 +21,7 @@ SCROLL_THUMB = "https://i.imgur.com/L1u0VlX.png"
 
 VERSION = __version__.split("-")[0]
 
+
 @Client.on_inline_query()
 async def inline(_, query: InlineQuery):
     string = query.query.lower()
@@ -38,6 +39,7 @@ async def inline(_, query: InlineQuery):
         )
 
         return
+
 
 @Client.on_inline_query()
 async def inline(_, query: InlineQuery):
