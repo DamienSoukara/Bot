@@ -14,10 +14,8 @@ logging.basicConfig(level=logging.INFO)
 @bot.on_message(filters.private)
 async def sub(c, m: Message):
     if m.from_user.id in Config.BANNED_USERS:
-       await c.delete_messages(
-            chat_id=m.chat.id,
-            message_ids=m.message_id,
-            revoke=True
+        await c.delete_messages(
+            chat_id=m.chat.id, message_ids=m.message_id, revoke=True
         )
         await m.reply_text("You are B A N N E D 🤣🤣🤣🤣 #Dev")
         return
