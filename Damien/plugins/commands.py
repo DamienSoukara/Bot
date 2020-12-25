@@ -1,7 +1,7 @@
+import asyncio
 import logging
 import random
 import time
-import asyncio
 
 from pyrogram import filters
 from pyrogram.errors import UserNotParticipant
