@@ -28,7 +28,7 @@ async def inline(_, query: InlineQuery):
 
     if query.from_user.id in Config.BANNED_USERS:
 
-       return
+        return
 
     if string == "":
         await query.answer(
