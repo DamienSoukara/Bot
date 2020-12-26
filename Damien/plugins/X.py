@@ -1,12 +1,5 @@
 from pyrogram import Client, __version__, emoji
-from pyrogram.types import (
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    InlineQuery,
-    InlineQueryResultArticle,
-    InlineQueryResultPhoto,
-    InputTextMessageContent,
-)
+from pyrogram.types import InlineQuery
 
 from config import Config
 from Damien.utils import docs
@@ -38,6 +31,5 @@ async def inline(_, query: InlineQuery):
 
         return
 
-    results = []
-    offset = int(query.offset or 0)
-    switch_pm_text = f"{emoji.OPEN_BOOK} Pyrogram Docs"
+    int(query.offset or 0)
+    f"{emoji.OPEN_BOOK} Pyrogram Docs"
