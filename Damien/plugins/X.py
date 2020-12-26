@@ -28,8 +28,3 @@ async def inline(_, query: InlineQuery):
             switch_pm_text=f"{emoji.MAGNIFYING_GLASS_TILTED_RIGHT} Banned",
             switch_pm_parameter="start",
         )
-
-        return
-
-    int(query.offset or 0)
-    f"{emoji.OPEN_BOOK} Pyrogram Docs"
