@@ -26,7 +26,7 @@ VERSION = __version__.split("-")[0]
 async def inline(_, query: InlineQuery):
     string = query.query.lower()
     if query.from_user.id in Config.BANNED_USERS:
-        pass
+        await
     if string == "":
         await query.answer(
             results=docs.BAN_RESULTS,
