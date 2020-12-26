@@ -25,7 +25,7 @@ VERSION = __version__.split("-")[0]
 @Client.on_inline_query()
 async def inline(_, query: InlineQuery):
     string = query.query.lower()
-    
+
     if query.from_user.id in Config.BANNED_USERS:
         return
     if string == "":
