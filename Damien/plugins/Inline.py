@@ -22,8 +22,8 @@ SCROLL_THUMB = "https://i.imgur.com/L1u0VlX.png"
 VERSION = __version__.split("-")[0]
 
 
-@Client.on_inline_query()
-    async def inline_answer(_, inline_query: InlineQuery):
+Client.on_inline_query()
+async def inline(_, query: InlineQuery):
         results = [
             InlineQueryResultArticle(
                 id=uuid4(),
@@ -49,7 +49,7 @@ VERSION = __version__.split("-")[0]
                 )
             )
         ]
-        if inline_query.from_user and inline_query.from_user.id in Config.BANNED_USERS:
+        if query.from_user and query.from_user.id in Config.BANNED_USERS:
             results.append(
                 InlineQueryResultArticle(
                     id=uuid4(),
