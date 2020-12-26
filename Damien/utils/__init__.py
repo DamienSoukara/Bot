@@ -1,4 +1,5 @@
-# All rights reserved.
+# Copyright (C) 2020 by AmineSoukara@Github, < https://github.com/AmineSoukara >.
+# ©️ @AmineSoukara @DamienSoukara
 
 from .tools import (  # noqa
     is_admin, is_dev, is_self,
