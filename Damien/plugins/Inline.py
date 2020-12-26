@@ -24,7 +24,7 @@ VERSION = __version__.split("-")[0]
 
 @Client.on_inline_query()
 async def inline(_, query: InlineQuery):
-        results = [
+        result = [
             InlineQueryResultArticle(
                 id=uuid4(),
                 title="Repo",
@@ -50,7 +50,7 @@ async def inline(_, query: InlineQuery):
             )
         ]
         if query.from_user and query.from_user.id in Config.BANNED_USERS:
-            results.append(
+            result.append(
                 InlineQueryResultArticle(
                     id=uuid4(),
                     title="Main Menu",
