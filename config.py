@@ -1,3 +1,6 @@
+# Copyright (C) 2020 by AmineSoukara@Github, < https://github.com/AmineSoukara >.
+# ©️ @AmineSoukara @DamienSoukara
+
 import os
 
 from dotenv import load_dotenv
