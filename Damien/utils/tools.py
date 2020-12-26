@@ -1,3 +1,6 @@
+# Copyright (C) 2020 by AmineSoukara@Github, < https://github.com/AmineSoukara >.
+# ©️ @AmineSoukara @DamienSoukara
+
 import time
 from pyrogram.types import Message
 from Damien import bot

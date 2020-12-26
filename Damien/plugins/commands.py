@@ -1,22 +1,40 @@
+# Copyright (C) 2020 by AmineSoukara@Github, < https://github.com/AmineSoukara >.
+# ©️ @AmineSoukara @DamienSoukara
+
+import asyncio
 import logging
+import random
+import time
 
 from pyrogram import filters
 from pyrogram.errors import UserNotParticipant
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.errors.exceptions import FileIdInvalid, FileReferenceEmpty
+from pyrogram.errors.exceptions.bad_request_400 import BadRequest
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from config import Config
-from Damien import bot
+from Damien import bot, versions
+from Damien.bot import START_TIME
+from Damien.utils import time_formatter
 from help import Messages as tr
 from helper_funcs.chat_base import TRChatBase
 from translation import Translation
 
 logging.basicConfig(level=logging.INFO)
 
+LOGO_DATA = []
+MSG_IDS = [25375, 25340, 25369]
+
 
 @bot.on_message(filters.command(["start"]))
 async def start(c, m):
     if m.from_user.id in Config.BANNED_USERS:
-        await m.reply_text("You are B A N N E D 🤣🤣🤣🤣")
+        await c.delete_messages(
+            chat_id=m.chat.id, message_ids=m.message_id, revoke=True
+        )
+        msg = await m.reply_text("You Are ❌ B A N N E D ❌ #Dev")
+        await asyncio.sleep(15)
+        await msg.delete()
         return
     TRChatBase(m.from_user.id, m.text, "start")
     update_channel = Config.UPDATE_CHANNEL
@@ -24,12 +42,12 @@ async def start(c, m):
         try:
             user = await c.get_chat_member(update_channel, m.chat.id)
             if user.status == "kicked":
-                await m.reply_text("🤭 Sorry Dude, You are **B A N N E D 🤣🤣🤣**")
+                await m.reply_text("🤭 Sorry Dude, You are **B A N N E D 🤣** #Channel")
                 return
         except UserNotParticipant:
             # await m.reply_text(f"Join @{update_channel} To Use Me")
             await m.reply_text(
-                text="[●](https://i.imgur.com/t1JsZ0I.gif) **Join My Updates Channel To Mse Me : **",
+                text="[●](https://i.imgur.com/t1JsZ0I.gif) **Join My Updates Channel To Use Me : **",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -64,6 +82,52 @@ async def start(c, m):
         caption=Translation.START_MSG.format(m.from_user.first_name),
         reply_to_message_id=m.message_id,
         reply_markup=markup,
+    )
+
+
+@bot.on_message(filters.private & filters.command("alive"))
+async def _alive(_, message: Message):
+    try:
+        await _sendit(message.chat.id)
+    except (FileIdInvalid, FileReferenceEmpty, BadRequest):
+        await _refresh_data()
+        await _sendit(message.chat.id)
+
+
+async def _refresh_data():
+    LOGO_DATA.clear()
+    for msg in await bot.get_messages("DamienHelp", MSG_IDS):
+        if not msg.animation:
+            continue
+        gif = msg.animation
+        LOGO_DATA.append((gif.file_id))
+
+
+async def _sendit(chat_id):
+    if not LOGO_DATA:
+        await _refresh_data()
+    caption = f"""
+**🤖 Bot Uptime** : `{time_formatter(time.time() - START_TIME)}`
+**🤖 Bot Version** : `{versions.__assistant_version__}`
+**️️⭐ Python** : `{versions.__python_version__}`
+**💥 Pyrogram** : `{versions.__pyro_version__}` """
+    button = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(
+                    text="License",
+                    url=("https://github.com/" "AmineSoukara"),
+                ),
+                InlineKeyboardButton(text="Repo", url="https://github.com/"),
+            ]
+        ]
+    )
+    file_id = random.choice(LOGO_DATA)
+    await bot.send_animation(
+        chat_id=chat_id,
+        animation=file_id,
+        caption=caption,
+        reply_markup=button,
     )
 
 
