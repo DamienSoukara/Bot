@@ -1,3 +1,6 @@
+# ©️ @AmineSoukara 
+# ©️ @DamienSoukara
+
 import asyncio
 
 from pyrogram import filters
