@@ -1,5 +1,5 @@
-# ©️ @AmineSoukara
-# ©️ @DamienSoukara
+# Copyright (C) 2020 by AmineSoukara@Github, < https://github.com/AmineSoukara >.
+# ©️ @AmineSoukara @DamienSoukara
 
 from pyrogram import Client, __version__, emoji
 from pyrogram.types import (
