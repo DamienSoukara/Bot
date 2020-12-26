@@ -1,3 +1,6 @@
+# Copyright (C) 2020 by AmineSoukara@Github, < https://github.com/AmineSoukara >.
+# ©️ @AmineSoukara @DamienSoukara
+
 class Translation(object):
 
     START_MSG = """[👋](https://i.imgur.com/wF1voFb.gif)  Hello **{}**
