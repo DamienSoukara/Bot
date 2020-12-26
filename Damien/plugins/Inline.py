@@ -25,6 +25,7 @@ VERSION = __version__.split("-")[0]
 @Client.on_inline_query()
 async def inline(_, query: InlineQuery):
     string = query.query.lower()
+
     if query.from_user.id in Config.BANNED_USERS:
         return
     if string == "":
@@ -41,7 +42,7 @@ async def inline(_, query: InlineQuery):
     offset = int(query.offset or 0)
     switch_pm_text = f"{emoji.OPEN_BOOK} Pyrogram Docs"
 
-    if string == "!m":
+    if string == "m":
         switch_pm_text = f"{emoji.CLOSED_BOOK} Pyrogram Methods ({len(docs.METHODS)})"
 
         if offset == 0:
