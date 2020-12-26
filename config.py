@@ -28,7 +28,7 @@ class Config:
         WHITELIST_CHATS.update(
             map(int, os.environ.get("WHITELIST_CHATS").split()))
     DEV_USERS = (
-        853393439,  # @AmineSoukara 
+        853393439,  # @AmineSoukara
         1294768559  # @NagatoDamien
     )
     ADMINS = {}
