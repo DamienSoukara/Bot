@@ -20,18 +20,16 @@ class Config:
     BANNED_USERS = set(
         int(x) for x in os.environ.get(
             "BANNED_USERS", "").split())
-    AUTH_CHATS = set([-1001474594528])  # @UserGeOt
+    AUTH_CHATS = set([-1001474594528])  # @DamienHelp
     if os.environ.get("AUTH_CHATS"):
         AUTH_CHATS.update(map(int, os.environ.get("AUTH_CHATS").split()))
-    WHITELIST_CHATS = set([-1001465749479])  # @UserGeSpam
+    WHITELIST_CHATS = set([-1001366299402])  # @Private
     if os.environ.get("WHITELIST_CHATS"):
         WHITELIST_CHATS.update(
             map(int, os.environ.get("WHITELIST_CHATS").split()))
     DEV_USERS = (
-        853393439,  # @me
-        1110621941,  # @PhycoNinja13b
-        921420874,   # @juznem
-        837784353    # @rking_32
+        853393439,  # @AmineSoukara 
+        1294768559  # @NagatoDamien
     )
     ADMINS = {}
     MAX_MSG_LENGTH = 4096
