@@ -35,7 +35,7 @@ async def inline(_, query: InlineQuery):
             switch_pm_parameter="start",
         )
 
-        continue
+        break
 
     if query.from_user.id not in Config.BANNED_USERS:
         pass
