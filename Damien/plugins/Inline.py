@@ -42,8 +42,6 @@ async def inline(_, query: InlineQuery):
     offset = int(query.offset or 0)
     switch_pm_text = f"{emoji.OPEN_BOOK} Pyrogram Docs"
 
-    if query.from_user.id in Config.BANNED_USERS:
-        pass
     if string == "m":
         switch_pm_text = f"{emoji.CLOSED_BOOK} Pyrogram Methods ({len(docs.METHODS)})"
 
