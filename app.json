@@ -1,34 +1,65 @@
 {
-  "name": "Bot",
-  "description": "Simple Bot.",
+  "name": "SixPathsOfPain",
+  "description": "My Beta Bot.",
   "logo": "https://telegra.ph/file/20f24ed46088c19296c1a.jpg",
   "keywords": [
-    "telegram",
-    "telegram-bot"
+    "Telegram",
+    "Telegram-Bot"
   ],
-  "repository": "https://github.com/AmineSoukara/Bot",
-  "success_url": "t.me/DamienSoukara",
+  "repository": "https://github.com/AmineSoukara/SixPathsOfPain",
+  "success_url": "https://t.me/DamienSoukara",
   "env": {
-    "ENV": {
-      "description": "Setting this to ANYTHING will enable heroku.",
-      "value": "ANYTHING"
-    },
     "BOT_TOKEN": {
       "description": "Your Bot Token.",
-      "value": ""
+      "value": "",
+      "required": true
     },
     "APP_ID": {
       "description": "Get this value from my.telegram.org! Please do not steal",
-      "value": ""
+      "value": "",
+      "required": true
     },
     "API_HASH": {
       "description": "Get this value from my.telegram.org! Please do not steal",
-      "value": ""
+      "value": "",
+      "required": true
+    },
+    "BANNED_USERS": {
+      "description": "Banned Unwanted Members..",
+      "value": "1294768559",
+      "required": false
+    },
+    "AUTH_USERS": {
+      "description": "allow only pre-defined users to use this bot",
+      "value": "993911054"
+    },
+    "UPDATE_CHANNEL": {
+      "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
+      "value": "DamienSoukara",
+      "required": false
+    },
+    "AUTH_CHATS": {
+      "description": "Your Auth Chats ID ..",
+      "value": "-1001474594528",
+      "required": false
+    },
+    "WHITELIST_CHATS": {
+      "description": "White List Chats ID ..",
+      "value": "-1001366299402",
+      "required": false
     }
   },
-  "buildpacks": [
-    {
-      "url": "heroku/python"
+  "addons": [
+  ],
+  "buildpacks": [{
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  }, {
+    "url": "heroku/python"
+  }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
     }
-  ]
+  }
 }
