@@ -1,4 +1,4 @@
-# ©️ @AmineSoukara 
+# ©️ @AmineSoukara
 # ©️ @DamienSoukara
 
 from pyrogram import Client, __version__, emoji
