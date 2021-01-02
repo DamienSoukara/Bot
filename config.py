@@ -39,7 +39,7 @@ class Messages():
     HELP_MSG = [
         ".",
         "**Hello 🌍 World**",
-        "Another Text 😅",
+        "Another Text .😅",
         "**[👨‍💻](https://i.imgur.com/TaOKIkf.gif) Developed By : @AmineSoukara**"]
 
     X_MSG = "Hey! [👋](https://i.imgur.com/Ljhp9Kk.gif) [{}](tg://user?id={}) \n©️ Read /help & /about"
